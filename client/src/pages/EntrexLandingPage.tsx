@@ -156,24 +156,24 @@ const EntrexLandingPage = (): JSX.Element => {
         {/* Hero Content - Two Column Layout */}
         <div className="absolute inset-0 flex items-center px-4 sm:px-8 lg:px-16 pt-20 lg:pt-0">
           <div className="w-full max-w-screen-2xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-full justify-center">
               
               {/* Left Column - Content */}
-              <div className="text-white space-y-6 lg:space-y-8">
+              <div className="text-white space-y-4 lg:space-y-8 text-center lg:text-left order-2 lg:order-1">
                 {/* Car Icon */}
-                <div className="flex items-center">
-                  <svg className="w-16 h-10 text-white fill-current" viewBox="0 0 64 40" data-testid="car-icon">
+                <div className="flex items-center justify-center lg:justify-start">
+                  <svg className="w-12 h-8 lg:w-16 lg:h-10 text-white fill-current" viewBox="0 0 64 40" data-testid="car-icon">
                     <path d="M8 24h4v8H8v-8zm40 0h4v8h-4v-8zM4 16l8-8h40l8 8v16h-8v8H12v-8H4V16z"/>
                   </svg>
                 </div>
 
                 {/* Main Heading */}
-                <h1 className="font-bold text-3xl sm:text-4xl lg:text-5xl xl:text-6xl [text-shadow:0px_4px_27.7px_#00000040] leading-tight">
-                  Premium Chauffeur<br />Services for Every Journey
+                <h1 className="font-bold text-2xl sm:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl [text-shadow:0px_4px_27.7px_#00000040] leading-tight">
+                  Premium Chauffeur<br className="hidden lg:block" /><span className="lg:hidden"> </span>Services for Every Journey
                 </h1>
 
                 {/* Description */}
-                <p className="font-medium text-base lg:text-lg leading-relaxed max-w-[400px]">
+                <p className="font-medium text-sm sm:text-base lg:text-lg leading-relaxed max-w-[400px] mx-auto lg:mx-0">
                   From corporate travel to airport transfers, ENTREX ensures a safe, punctual, and comfortable ride—every time.
                 </p>
 
@@ -186,24 +186,24 @@ const EntrexLandingPage = (): JSX.Element => {
                 </button>
 
                 {/* Features */}
-                <div className="flex flex-wrap gap-8 lg:gap-12 pt-4">
-                  <div className="text-center">
-                    <div className="font-bold text-lg">Verified</div>
-                    <div className="text-sm opacity-90">Chauffeurs</div>
+                <div className="flex flex-wrap justify-center lg:justify-start gap-6 lg:gap-8 xl:gap-12 pt-4">
+                  <div className="text-center lg:text-left">
+                    <div className="font-bold text-base lg:text-lg">Verified</div>
+                    <div className="text-xs lg:text-sm opacity-90">Chauffeurs</div>
                   </div>
-                  <div className="text-center">
-                    <div className="font-bold text-lg">Real-time</div>
-                    <div className="text-sm opacity-90">Tracking</div>
+                  <div className="text-center lg:text-left">
+                    <div className="font-bold text-base lg:text-lg">Real-time</div>
+                    <div className="text-xs lg:text-sm opacity-90">Tracking</div>
                   </div>
-                  <div className="text-center">
-                    <div className="font-bold text-lg">24×7</div>
-                    <div className="text-sm opacity-90">Support</div>
+                  <div className="text-center lg:text-left">
+                    <div className="font-bold text-base lg:text-lg">24×7</div>
+                    <div className="text-xs lg:text-sm opacity-90">Support</div>
                   </div>
                 </div>
               </div>
 
               {/* Right Column - Booking Form */}
-              <div className="bg-gradient-to-br from-[#ed2628] to-[#f3aa45] rounded-2xl p-6 lg:p-8 shadow-xl">
+              <div className="bg-gradient-to-br from-[#ed2628] to-[#f3aa45] rounded-2xl p-6 lg:p-8 shadow-xl w-full max-w-md lg:max-w-none order-1 lg:order-2">
                 <h2 className="text-white font-bold text-xl lg:text-2xl mb-6 text-center">
                   Book Your Ride Instantly
                 </h2>
