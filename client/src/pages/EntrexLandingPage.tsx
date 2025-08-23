@@ -343,7 +343,7 @@ const EntrexLandingPage = (): JSX.Element => {
 
         {/* Footer */}
         <img
-          className="w-full h-[666px]"
+          className="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[666px] object-cover"
           alt="Footer"
           src="/figmaAssets/footer-1.png"
         />

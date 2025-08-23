@@ -50,20 +50,20 @@ export const ContactUsSection = (): JSX.Element => {
   return (
     <section className="flex flex-col w-full items-center gap-2.5 relative">
       <div className="relative w-full max-w-[1584px]">
-        <div className="flex flex-col items-center gap-4 mb-16">
+        <div className="flex flex-col items-center gap-4 mb-8 lg:mb-16 px-4">
           <div className="relative">
-            <div className="absolute w-[250px] h-[38px] top-[31px] left-[289px] -rotate-3 bg-[linear-gradient(270deg,rgba(243,170,69,1)_0%,rgba(237,38,40,1)_100%)] opacity-90" />
-            <h2 className="relative [font-family:'Inter',Helvetica] font-bold text-black text-[56px] text-center tracking-[0] leading-[59.4px]">
+            <div className="absolute w-[150px] sm:w-[200px] lg:w-[250px] h-[20px] sm:h-[30px] lg:h-[38px] top-[15px] sm:top-[20px] lg:top-[31px] left-[50%] transform -translate-x-1/2 lg:left-[289px] lg:transform-none -rotate-3 bg-[linear-gradient(270deg,rgba(243,170,69,1)_0%,rgba(237,38,40,1)_100%)] opacity-90" />
+            <h2 className="relative font-bold text-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[56px] text-center tracking-[0] leading-tight lg:leading-[59.4px]">
               Why ENTREX?
             </h2>
           </div>
-          <p className="[font-family:'Inter',Helvetica] font-medium text-black text-base text-center tracking-[0] leading-[17.0px] max-w-[693px]">
+          <p className="font-medium text-black text-sm sm:text-base text-center tracking-[0] leading-relaxed max-w-[693px] px-4">
             Trusted by hundreds of travelers and corporates across India for a
             premium ride experience.
           </p>
         </div>
 
-        <div className="grid grid-cols-3 gap-8 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-center">
           <div className="flex flex-col gap-8">
             {features
               .filter((feature) => feature.position.startsWith("left"))
@@ -72,18 +72,18 @@ export const ContactUsSection = (): JSX.Element => {
                   key={`left-${index}`}
                   className="border-none shadow-none bg-transparent"
                 >
-                  <CardContent className="flex flex-col items-end gap-3 p-0">
-                    <div className="flex items-end gap-2">
+                  <CardContent className="flex flex-col items-center lg:items-end gap-3 p-4 lg:p-0">
+                    <div className="flex items-center lg:items-end gap-2">
                       <img
-                        className="w-9 h-9"
+                        className="w-8 h-8 lg:w-9 lg:h-9"
                         alt={feature.title}
                         src={feature.icon}
                       />
-                      <h3 className="[font-family:'Inter',Helvetica] font-bold text-gray-900 text-2xl tracking-[0] leading-[26px] whitespace-nowrap">
+                      <h3 className="font-bold text-gray-900 text-lg lg:text-2xl tracking-[0] leading-[26px] text-center lg:text-right">
                         {feature.title}
                       </h3>
                     </div>
-                    <p className="w-96 font-normal text-neutral-900 text-base text-right leading-6 [font-family:'Inter',Helvetica] tracking-[0]">
+                    <p className="w-full max-w-96 font-normal text-neutral-900 text-sm lg:text-base text-center lg:text-right leading-6 tracking-[0]">
                       {feature.description}
                     </p>
                   </CardContent>
@@ -91,9 +91,9 @@ export const ContactUsSection = (): JSX.Element => {
               ))}
           </div>
 
-          <div className="flex justify-center">
+          <div className="flex justify-center order-first lg:order-none">
             <img
-              className="w-full max-w-[864px] h-auto"
+              className="w-full max-w-[300px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[864px] h-auto"
               alt="ENTREX Premium Vehicle"
               src="/figmaAssets/362953400-5496ea17-8eb7-4e53-b7b9-f5c434afef49-1.png"
             />
@@ -107,18 +107,18 @@ export const ContactUsSection = (): JSX.Element => {
                   key={`right-${index}`}
                   className="border-none shadow-none bg-transparent"
                 >
-                  <CardContent className="flex flex-col items-start gap-3 p-0">
-                    <div className="flex items-end gap-2">
+                  <CardContent className="flex flex-col items-center lg:items-start gap-3 p-4 lg:p-0">
+                    <div className="flex items-center lg:items-end gap-2">
                       <img
-                        className="w-9 h-9"
+                        className="w-8 h-8 lg:w-9 lg:h-9"
                         alt={feature.title}
                         src={feature.icon}
                       />
-                      <h3 className="[font-family:'Inter',Helvetica] font-bold text-gray-900 text-2xl tracking-[0] leading-[26px] whitespace-nowrap">
+                      <h3 className="font-bold text-gray-900 text-lg lg:text-2xl tracking-[0] leading-[26px] text-center lg:text-left">
                         {feature.title}
                       </h3>
                     </div>
-                    <p className="w-96 font-normal text-neutral-900 text-base leading-6 [font-family:'Inter',Helvetica] tracking-[0]">
+                    <p className="w-full max-w-96 font-normal text-neutral-900 text-sm lg:text-base text-center lg:text-left leading-6 tracking-[0]">
                       {feature.description}
                     </p>
                   </CardContent>

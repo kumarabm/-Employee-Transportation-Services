@@ -59,34 +59,34 @@ export const OurServicesSection = (): JSX.Element => {
   ];
 
   return (
-    <section className="relative w-full">
-      <div className="flex flex-col items-center gap-7">
+    <section className="relative w-full py-8 lg:py-16 px-4">
+      <div className="flex flex-col items-center gap-4 lg:gap-7">
         <header className="flex flex-col items-center gap-4 w-full">
-          <h2 className="[font-family:'Inter',Helvetica] font-bold text-black text-[56px] text-center tracking-[0] leading-[59.4px]">
+          <h2 className="font-bold text-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[56px] text-center tracking-[0] leading-tight lg:leading-[59.4px]">
             In-car Provisions
           </h2>
 
-          <p className="[font-family:'Inter',Helvetica] font-medium text-black text-base text-center tracking-[0] leading-[17.0px] max-w-2xl">
+          <p className="font-medium text-black text-sm sm:text-base text-center tracking-[0] leading-relaxed max-w-2xl px-4">
             Every ENTREX ride comes with thoughtful in-car provisions to ensure
             your comfort, safety, and satisfaction.
           </p>
         </header>
 
-        <div className="flex flex-col items-center gap-[71px] w-full mt-[60px]">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-16 gap-y-12 max-w-[1525px] w-full justify-items-center">
+        <div className="flex flex-col items-center gap-8 lg:gap-[71px] w-full mt-8 lg:mt-[60px]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 lg:gap-x-16 lg:gap-y-12 max-w-[1525px] w-full justify-items-center px-4">
             {services.map((service, index) => (
               <Card
                 key={index}
-                className="flex flex-col w-[250px] h-[129px] items-center justify-center rounded-[20px] border-2 border-solid border-[#3535351a] bg-transparent"
+                className="flex flex-col w-full max-w-[220px] sm:max-w-[250px] h-[100px] sm:h-[129px] items-center justify-center rounded-[20px] border-2 border-solid border-[#3535351a] bg-transparent"
               >
-                <CardContent className="flex flex-col items-center justify-center p-0 gap-2">
+                <CardContent className="flex flex-col items-center justify-center p-2 lg:p-0 gap-1 lg:gap-2">
                   <img
-                    className="w-[84.76px] h-[84.76px]"
+                    className="w-12 h-12 sm:w-16 sm:h-16 lg:w-[84.76px] lg:h-[84.76px]"
                     alt={service.label}
                     src={service.icon}
                   />
 
-                  <div className="[font-family:'Inter',Helvetica] font-normal text-[#060606] text-lg tracking-[0] leading-[27.0px] text-center">
+                  <div className="font-normal text-[#060606] text-sm sm:text-base lg:text-lg tracking-[0] leading-[27.0px] text-center">
                     {service.label}
                   </div>
                 </CardContent>
@@ -94,8 +94,8 @@ export const OurServicesSection = (): JSX.Element => {
             ))}
           </div>
 
-          <Button className="flex items-center justify-center gap-2.5 px-[43px] py-[15px] h-[49px] w-[268px] rounded-[140px] bg-[linear-gradient(270deg,rgba(243,170,69,1)_0%,rgba(237,38,40,1)_100%)] hover:opacity-90 transition-opacity">
-            <span className="[font-family:'Plus_Jakarta_Sans',Helvetica] font-medium text-[#ffffff] text-base text-center tracking-[0] leading-[17.0px] whitespace-nowrap">
+          <Button className="flex items-center justify-center gap-2.5 px-6 sm:px-8 lg:px-[43px] py-3 lg:py-[15px] h-[40px] sm:h-[45px] lg:h-[49px] w-full max-w-[220px] sm:max-w-[268px] rounded-[140px] bg-[linear-gradient(270deg,rgba(243,170,69,1)_0%,rgba(237,38,40,1)_100%)] hover:opacity-90 transition-opacity">
+            <span className="font-medium text-[#ffffff] text-sm sm:text-base text-center tracking-[0] leading-[17.0px]">
               Book Your Journey Now
             </span>
           </Button>
