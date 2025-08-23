@@ -153,21 +153,160 @@ const EntrexLandingPage = (): JSX.Element => {
           </div>
         )}
 
-        {/* Hero Content */}
-        <div className="absolute inset-0 flex items-center justify-center px-4 sm:px-8 lg:px-16 pt-20 lg:pt-0">
-          <div className="max-w-[796px] text-center">
-            <h1 className="text-white font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-4 sm:mb-6 [text-shadow:0px_4px_27.7px_#00000040] leading-tight">
-              Premium Chauffeur Services for Every Journey
-            </h1>
-            <p className="text-white font-medium text-sm sm:text-base lg:text-lg mb-6 sm:mb-8 max-w-[602px] mx-auto leading-relaxed">
-              From corporate travel to airport transfers, ENTREX ensures a safe, punctual, and comfortable ride—every time.
-            </p>
-            <button 
-              className="bg-gradient-to-r from-[#f3aa45] to-[#ed2628] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium text-sm sm:text-base hover:opacity-90 transition-opacity shadow-lg"
-              data-testid="call-us-button"
-            >
-              Call Us Now
-            </button>
+        {/* Hero Content - Two Column Layout */}
+        <div className="absolute inset-0 flex items-center px-4 sm:px-8 lg:px-16 pt-20 lg:pt-0">
+          <div className="w-full max-w-screen-2xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+              
+              {/* Left Column - Content */}
+              <div className="text-white space-y-6 lg:space-y-8">
+                {/* Car Icon */}
+                <div className="flex items-center">
+                  <svg className="w-16 h-10 text-white fill-current" viewBox="0 0 64 40" data-testid="car-icon">
+                    <path d="M8 24h4v8H8v-8zm40 0h4v8h-4v-8zM4 16l8-8h40l8 8v16h-8v8H12v-8H4V16z"/>
+                  </svg>
+                </div>
+
+                {/* Main Heading */}
+                <h1 className="font-bold text-3xl sm:text-4xl lg:text-5xl xl:text-6xl [text-shadow:0px_4px_27.7px_#00000040] leading-tight">
+                  Premium Chauffeur<br />Services for Every Journey
+                </h1>
+
+                {/* Description */}
+                <p className="font-medium text-base lg:text-lg leading-relaxed max-w-[400px]">
+                  From corporate travel to airport transfers, ENTREX ensures a safe, punctual, and comfortable ride—every time.
+                </p>
+
+                {/* Call to Action Button */}
+                <button 
+                  className="bg-gradient-to-r from-[#f3aa45] to-[#ed2628] text-white px-6 py-3 rounded-full font-medium text-base hover:opacity-90 transition-opacity shadow-lg"
+                  data-testid="call-us-button"
+                >
+                  Call Us Now
+                </button>
+
+                {/* Features */}
+                <div className="flex flex-wrap gap-8 lg:gap-12 pt-4">
+                  <div className="text-center">
+                    <div className="font-bold text-lg">Verified</div>
+                    <div className="text-sm opacity-90">Chauffeurs</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="font-bold text-lg">Real-time</div>
+                    <div className="text-sm opacity-90">Tracking</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="font-bold text-lg">24×7</div>
+                    <div className="text-sm opacity-90">Support</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column - Booking Form */}
+              <div className="bg-gradient-to-br from-[#ed2628] to-[#f3aa45] rounded-2xl p-6 lg:p-8 shadow-xl">
+                <h2 className="text-white font-bold text-xl lg:text-2xl mb-6 text-center">
+                  Book Your Ride Instantly
+                </h2>
+                
+                <form className="space-y-4" data-testid="booking-form">
+                  {/* Name and Phone Row */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <input
+                      type="text"
+                      placeholder="Full Name"
+                      className="w-full px-4 py-3 rounded-lg bg-white/90 border-0 placeholder-gray-600 text-gray-800 focus:ring-2 focus:ring-white/50 outline-none"
+                      data-testid="input-full-name"
+                    />
+                    <input
+                      type="tel"
+                      placeholder="Phone Number"
+                      className="w-full px-4 py-3 rounded-lg bg-white/90 border-0 placeholder-gray-600 text-gray-800 focus:ring-2 focus:ring-white/50 outline-none"
+                      data-testid="input-phone"
+                    />
+                  </div>
+
+                  {/* Email */}
+                  <input
+                    type="email"
+                    placeholder="Email Address"
+                    className="w-full px-4 py-3 rounded-lg bg-white/90 border-0 placeholder-gray-600 text-gray-800 focus:ring-2 focus:ring-white/50 outline-none"
+                    data-testid="input-email"
+                  />
+
+                  {/* Date and Time Row */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <select 
+                      className="w-full px-4 py-3 rounded-lg bg-white/90 border-0 text-gray-600 focus:ring-2 focus:ring-white/50 outline-none"
+                      data-testid="select-date"
+                    >
+                      <option>Select Date</option>
+                      <option>Today</option>
+                      <option>Tomorrow</option>
+                    </select>
+                    <select 
+                      className="w-full px-4 py-3 rounded-lg bg-white/90 border-0 text-gray-600 focus:ring-2 focus:ring-white/50 outline-none"
+                      data-testid="select-time"
+                    >
+                      <option>Select Time</option>
+                      <option>09:00 AM</option>
+                      <option>10:00 AM</option>
+                      <option>11:00 AM</option>
+                    </select>
+                  </div>
+
+                  {/* Adults and Children Row */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <select 
+                      className="w-full px-4 py-3 rounded-lg bg-white/90 border-0 text-gray-600 focus:ring-2 focus:ring-white/50 outline-none"
+                      data-testid="select-adults"
+                    >
+                      <option>Adults</option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                    </select>
+                    <select 
+                      className="w-full px-4 py-3 rounded-lg bg-white/90 border-0 text-gray-600 focus:ring-2 focus:ring-white/50 outline-none"
+                      data-testid="select-children"
+                    >
+                      <option>Children</option>
+                      <option>0</option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                    </select>
+                  </div>
+
+                  {/* Message */}
+                  <textarea
+                    placeholder="Message"
+                    rows={3}
+                    className="w-full px-4 py-3 rounded-lg bg-white/90 border-0 placeholder-gray-600 text-gray-800 focus:ring-2 focus:ring-white/50 outline-none resize-none"
+                    data-testid="textarea-message"
+                  ></textarea>
+
+                  {/* Buttons */}
+                  <div className="grid grid-cols-2 gap-4 pt-2">
+                    <button
+                      type="reset"
+                      className="w-full py-3 px-4 rounded-lg bg-white/20 text-white font-medium hover:bg-white/30 transition-colors"
+                      data-testid="button-reset"
+                    >
+                      RESET
+                    </button>
+                    <button
+                      type="submit"
+                      className="w-full py-3 px-4 rounded-lg bg-white text-[#ed2628] font-bold hover:bg-gray-100 transition-colors"
+                      data-testid="button-book-now"
+                    >
+                      LET'S BOOK NOW
+                    </button>
+                  </div>
+                </form>
+              </div>
+              
+            </div>
           </div>
         </div>
       </div>
