@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link } from "wouter";
 import { CallToActionSection } from "./sections/CallToActionSection";
 import { CertificationsSection } from "./sections/CertificationsSection";
 import { ContactUsSection } from "./sections/ContactUsSection";
@@ -22,7 +22,7 @@ const navigationItems = [
 
 const placeholderBoxes = Array(10).fill(null);
 
-export const EntrexLandingPage = (): JSX.Element => {
+const EntrexLandingPage = (): JSX.Element => {
   return (
     <div className="bg-[#f2f2f2] w-full min-h-screen">
       {/* Top Contact Bar */}
@@ -41,7 +41,7 @@ export const EntrexLandingPage = (): JSX.Element => {
       {/* Hero Header with Navigation */}
       <div className="w-full h-[898px] bg-[url(/figmaAssets/side-view-man-holding-suitcase--1--1.png)] bg-[100%_100%] relative">
         <div className="flex w-full max-w-[1658px] items-start justify-between mx-auto pt-3 px-[129px]">
-          <Link to="/entrex-landing-page">
+          <Link href="/">
             <img
               className="w-[211.86px] h-20 object-cover"
               alt="Background"
@@ -108,3 +108,5 @@ export const EntrexLandingPage = (): JSX.Element => {
     </div>
   );
 };
+
+export default EntrexLandingPage;
