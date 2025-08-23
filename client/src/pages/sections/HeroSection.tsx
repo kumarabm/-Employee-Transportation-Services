@@ -28,18 +28,21 @@ export const HeroSection = (): JSX.Element => {
   ];
 
   return (
-    <section className="relative w-full">
-      <div className="relative h-[646px]">
-        <div className="flex items-center gap-[58px] absolute top-0 left-[3px]">
-          <img
-            className={certificationLogos[0].className}
-            alt={certificationLogos[0].alt}
-            src={certificationLogos[0].src}
-          />
+    <section className="relative w-full py-16 lg:py-24 bg-white">
+      <div className="max-w-[1400px] mx-auto px-4">
+        {/* Main Certifications Display */}
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12 mb-16">
+          <div className="flex flex-col items-center">
+            <img
+              className="w-[200px] lg:w-[275px] h-[130px] lg:h-[183px] object-cover"
+              alt={certificationLogos[0].alt}
+              src={certificationLogos[0].src}
+            />
+          </div>
 
-          <div className="relative w-[790px] h-[646px]">
-            <div className="relative w-[788px] h-[646px] bg-[url(/figmaAssets/golden-olive-foliage-branches-decorative-ornament-frame-1.png)] bg-cover bg-[50%_50%]">
-              <h1 className="absolute top-[264px] left-[206px] [font-family:'Inter',Helvetica] font-bold text-black text-[56px] text-center tracking-[0] leading-[59.4px]">
+          <div className="relative flex items-center justify-center">
+            <div className="relative w-[300px] lg:w-[500px] xl:w-[600px] h-[300px] lg:h-[400px] xl:h-[500px] bg-[url(/figmaAssets/golden-olive-foliage-branches-decorative-ornament-frame-1.png)] bg-cover bg-center flex items-center justify-center">
+              <h1 className="font-bold text-black text-2xl lg:text-4xl xl:text-[56px] text-center tracking-[0] leading-tight">
                 Our
                 <br />
                 Certifications
@@ -47,29 +50,31 @@ export const HeroSection = (): JSX.Element => {
             </div>
           </div>
 
-          <img
-            className={certificationLogos[1].className}
-            alt={certificationLogos[1].alt}
-            src={certificationLogos[1].src}
-          />
+          <div className="flex flex-col items-center">
+            <img
+              className="w-[200px] lg:w-[275px] h-[130px] lg:h-[183px] object-cover"
+              alt={certificationLogos[1].alt}
+              src={certificationLogos[1].src}
+            />
+          </div>
         </div>
 
-        {affiliationInfo.map((info, index) => (
-          <div
-            key={index}
-            className={`flex flex-col items-start gap-3 absolute top-[447px] ${index === 0 ? "left-0" : "left-[1180px]"}`}
-          >
-            <div className="flex items-end justify-end gap-0.5 flex-[0_0_auto]">
-              <h2 className="w-[353px] mt-[-1.00px] font-bold text-gray-900 text-2xl leading-[26px] [font-family:'Inter',Helvetica] tracking-[0]">
+        {/* Affiliation Information */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-[1000px] mx-auto">
+          {affiliationInfo.map((info, index) => (
+            <div
+              key={index}
+              className="flex flex-col items-start gap-3 text-center lg:text-left"
+            >
+              <h2 className="font-bold text-gray-900 text-lg lg:text-2xl leading-tight tracking-[0]">
                 {info.title}
               </h2>
+              <p className="font-normal text-neutral-900 text-sm lg:text-base leading-6 tracking-[0]">
+                {info.description}
+              </p>
             </div>
-
-            <p className="w-[324px] font-normal text-neutral-900 text-base leading-6 [font-family:'Inter',Helvetica] tracking-[0]">
-              {info.description}
-            </p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );
