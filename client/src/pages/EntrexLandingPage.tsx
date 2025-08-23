@@ -313,7 +313,6 @@ const EntrexLandingPage = (): JSX.Element => {
 
       {/* Main Content Sections */}
       <div className="w-full">
-        <TrustedBySection />
         <NewsUpdatesSection />
         <ContactUsSection />
         <CertificationsSection />
