@@ -5,12 +5,16 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import EntrexLandingPage from "@/pages/EntrexLandingPage";
+import ClientsPage from "@/pages/Clients";
+import AboutUsPage from "@/pages/AboutUs";
 
 function Router() {
   return (
     <Switch>
       {/* Add pages below */}
       <Route path="/" component={EntrexLandingPage} />
+      <Route path="/clients" component={ClientsPage} />
+      <Route path="/about-us" component={AboutUsPage} />
       {/* Fallback to 404 */}
       <Route component={NotFound} />
     </Switch>

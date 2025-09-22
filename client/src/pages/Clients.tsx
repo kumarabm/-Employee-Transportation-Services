@@ -9,7 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Star } from "lucide-react";
 import { Link } from "wouter";
 
-export default function ClientsPage() {
+const ClientsPage = () => {
   const navigationItems = ["About Us", "Services", "Tour Packages", "Luxury Car Rentals", "Clients", "Contact Us"];
   
   const companyLogos = [
@@ -347,3 +347,5 @@ export default function ClientsPage() {
     </div>
   );
 }
+
+export default ClientsPage;
