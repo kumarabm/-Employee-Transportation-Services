@@ -17,7 +17,7 @@ const navigationItems = [
   { label: "Tour Packages", href: "#tour-packages" },
   { label: "Luxury Car Rentals", href: "#luxury-rentals" },
   { label: "Clients", href: "/clients" },
-  { label: "Contact Us", href: "#contact" },
+  { label: "Contact Us", href: "/contact-us" },
 ];
 
 const servicesMenuItems = [
