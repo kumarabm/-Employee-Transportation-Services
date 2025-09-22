@@ -6,6 +6,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Star, ChevronDown } from "lucide-react";
+import mugundhanImg from "../../../attached_assets/4388243b170dd9d4c60f4aac1c90e1116efbd5c5.png"
+import balajiImg from "../../../attached_assets/b50e807326be58e8dae4929f129342f08b6a8c84.png"
 
 const navigationItems = [
   { label: "About Us", href: "/about-us" },
@@ -308,51 +310,83 @@ const AboutUsPage = (): JSX.Element => {
       </section>
 
 
-      {/* Meet the Founders */}
-      <section className="py-16 bg-gray-900">
-        <div className="max-w-6xl mx-auto px-6">
-          {/* OUR TEAM Badge */}
-          <div className="flex justify-center mb-8">
-            <span className="bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-semibold">
-              OUR TEAM
-            </span>
-          </div>
-          
-          <h2 className="text-4xl lg:text-5xl font-bold text-center mb-16 text-white">Meet the Founders</h2>
-          
-          <div className="grid md:grid-cols-2 gap-16 max-w-4xl mx-auto">
-            {/* Founder 1 */}
-            <div className="text-center">
-              <div className="w-72 h-80 mx-auto mb-6 rounded-2xl overflow-hidden bg-gradient-to-br from-yellow-400 to-orange-500 p-1">
-                <div className="w-full h-full rounded-2xl overflow-hidden">
-                  <img 
-                    src="/attached_assets/stock_images/professional_busines_5c6ba0a8.jpg"
-                    alt="Founder 1"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-              <h3 className="text-xl font-bold mb-2 text-white">Ravi Vardhan Reddy</h3>
-              <p className="text-gray-300 text-sm">Managing Director & Chairman</p>
-            </div>
-            
-            {/* Founder 2 */}
-            <div className="text-center">
-              <div className="w-72 h-80 mx-auto mb-6 rounded-2xl overflow-hidden bg-gradient-to-br from-red-500 to-pink-500 p-1">
-                <div className="w-full h-full rounded-2xl overflow-hidden">
-                  <img 
-                    src="/attached_assets/stock_images/professional_busines_932df0f3.jpg"
-                    alt="Founder 2"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-              <h3 className="text-xl font-bold mb-2 text-white">Prasad Ranga Chafhadri</h3>
-              <p className="text-gray-300 text-sm">Managing Director & Chairman</p>
-            </div>
-          </div>
+    {/* Meet the Founders */}
+<section className="py-16 bg-white">
+  <div className="max-w-6xl mx-auto px-6">
+    {/* OUR TEAM Badge */}
+    <div className="flex justify-center mb-4">
+      <span className="bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-semibold">
+        OUR TEAM
+      </span>
+    </div>
+
+    {/* Section Title */}
+    <h2 className="text-4xl lg:text-5xl font-bold text-center mb-2 text-gray-900">
+      Meet the Founders
+    </h2>
+
+    {/* Subtitle */}
+    <p className="text-center text-gray-600 mb-16">
+      Vision-Driven. Execution-Focused.
+    </p>
+
+    {/* Founders Grid */}
+    <div className="grid md:grid-cols-2 gap-16 max-w-5xl mx-auto">
+      
+      {/* Founder 1 */}
+      <div className="text-center md:text-left">
+        {/* Image with yellow background */}
+        <div 
+          className="w-72 h-80 mx-auto mb-6 rounded-xl overflow-hidden flex items-center justify-center" 
+          style={{ backgroundColor: '#FFC300' }}
+        >
+          <img 
+            src={mugundhanImg}
+            alt="Mugundhan Sankar" 
+            className="w-full h-full object-cover"
+          />
         </div>
-      </section>
+
+        {/* Name and Title */}
+        <h3 className="text-lg font-semibold text-gray-900">Mugundhan Sankar</h3>
+        <p className="text-gray-600 text-sm mb-4">Founder & Managing Director</p>
+
+        {/* Description */}
+        <p className="text-gray-700 text-sm leading-relaxed">
+          With 15+ years in logistics and operations, Mugundhan built ENTEX to redefine 
+          Indian ground transport with global standards and Indian values. His vision continues 
+          to guide the company’s expansion and operational discipline.
+        </p>
+      </div>
+
+      {/* Founder 2 */}
+      <div className="text-center md:text-left">
+        {/* Image with red background */}
+        <div 
+          className="w-72 h-80 mx-auto mb-6 rounded-xl overflow-hidden flex items-center justify-center" 
+          style={{ backgroundColor: '#FF3C3C' }}
+        >
+          <img 
+            src={balajiImg}
+            alt="Balaji A" 
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        {/* Name and Title */}
+        <h3 className="text-lg font-semibold text-gray-900">Balaji A</h3>
+        <p className="text-gray-600 text-sm mb-4">Director – Strategy & Partnerships</p>
+
+        {/* Description */}
+        <p className="text-gray-700 text-sm leading-relaxed">
+          Focused on client growth and digital transformation, Balaji leads ENTEX’s enterprise 
+          engagements, tech roadmap, and innovation-driven service model.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* Join Our Team */}
       <section className="py-12 bg-gray-100">
