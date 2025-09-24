@@ -9,13 +9,13 @@ import { Star, ChevronDown } from "lucide-react";
 import mugundhanImg from "../../../attached_assets/4388243b170dd9d4c60f4aac1c90e1116efbd5c5.png"
 import balajiImg from "../../../attached_assets/b50e807326be58e8dae4929f129342f08b6a8c84.png"
 
-const navigationItems = [
+ const navigationItems = [
   { label: "About Us", href: "/about-us" },
   { label: "Services", href: "#services", hasMenu: true },
-  { label: "Tour Packages", href: "#tour-packages" },
+  { label: "Tour Packages", href: "/employee-transportation-services" },
   { label: "Luxury Car Rentals", href: "#luxury-rentals" },
   { label: "Clients", href: "/clients" },
-  { label: "Contact Us", href: "#contact" },
+  { label: "Contact Us", href: "/contact-us" },
 ];
 
 const servicesMenuItems = [

@@ -11,11 +11,11 @@ import { OurServicesSection } from "./sections/OurServicesSection";
 import { TrustedBySection } from "./sections/TrustedBySection";
 import { WhyChooseUsSection } from "./sections/WhyChooseUsSection";
 
-const navigationItems = [
+ const navigationItems = [
   { label: "About Us", href: "/about-us" },
   { label: "Services", href: "#services", hasMenu: true },
-  { label: "Tour Packages", href: "#tour-packages" },
-  { label: "Luxury Car Rentals", href: "#luxury-rentals" },
+  { label: "Tour Packages", href: "/employee-transportation-services" },
+  { label: "Luxury Car Rentals", href: "/" },
   { label: "Clients", href: "/clients" },
   { label: "Contact Us", href: "/contact-us" },
 ];

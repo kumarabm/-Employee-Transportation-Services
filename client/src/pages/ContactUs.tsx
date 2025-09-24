@@ -3,7 +3,14 @@ import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 
 const ContactUs = () => {
-  const navigationItems = ["About Us", "Services", "Tour Packages", "Luxury Car Rentals", "Clients", "Contact Us"];
+ const navigationItems = [
+  { label: "About Us", href: "/about-us" },
+  { label: "Services", href: "#services", hasMenu: true },
+  { label: "Tour Packages", href: "/employee-transportation-services" },
+  { label: "Luxury Car Rentals", href: "/" },
+  { label: "Clients", href: "/clients" },
+  { label: "Contact Us", href: "/contact-us" },
+];
   
   const companyLogos = [
     { name: "Google", src: "/figmaAssets/google-logo.png" },
