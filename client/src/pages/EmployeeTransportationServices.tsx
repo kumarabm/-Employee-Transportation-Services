@@ -22,7 +22,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import Image from "../../public/figmaAssets/heart.png";
+import Image from "../pages/Assets/heart.png";
 
 const EmployeeTransportationServices = (): JSX.Element => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
