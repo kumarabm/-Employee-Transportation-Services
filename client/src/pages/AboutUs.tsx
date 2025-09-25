@@ -18,14 +18,6 @@ import balajiImg from "../../../attached_assets/b50e807326be58e8dae4929f129342f0
   { label: "Contact Us", href: "/contact-us" },
 ];
 
-const servicesMenuItems = [
-  { label: "Airport Transfers", href: "#airport-transfers" },
-  { label: "Corporate Travel", href: "#corporate-travel" },
-  { label: "City Tours", href: "#city-tours" },
-  { label: "Wedding Services", href: "#wedding-services" },
-  { label: "Event Transportation", href: "#event-transportation" },
-  { label: "Long Distance Travel", href: "#long-distance" },
-];
 
 const AboutUsPage = (): JSX.Element => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -149,6 +141,39 @@ const AboutUsPage = (): JSX.Element => {
     }
   ];
 
+  const servicesMenuItems = [
+    {
+      title: "Corporate Mobility Solutions",
+      items: [
+        "Employee Transportation",
+        "Employee Trips",
+        "Executive Leasing",
+        "Roster Planning & Routing",
+        "Management Reporting",
+        "Systemized Billing",
+        "Transport Desk & Ticketing",
+      ],
+    },
+    {
+      title: "Event & Custom Travel",
+      items: [
+        "Events & Seminars",
+        "Elite Weddings",
+        "Family Events & Holidays",
+        "Customized Tours",
+      ],
+    },
+    {
+      title: "Tour & Rental Services",
+      items: [
+        "Pilgrim Tours",
+        "Package Tours",
+        "Premium Rent-a-Cab",
+        "Ticketing",
+      ],
+    },
+  ];
+
   return (
     <div className="min-h-screen flex flex-col bg-white">
       {/* Top Contact Bar */}
@@ -164,57 +189,140 @@ const AboutUsPage = (): JSX.Element => {
               <img src="/figmaAssets/background--3--1.png" alt="Entrex" className="h-12" />
             </div>
           </Link>
-          <nav className="hidden md:flex space-x-8">
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-8 2xl:gap-[50px]">
             {navigationItems.map((item, index) => (
-              <div key={index} className="relative group">
-                <Link 
+              <div
+                key={index}
+                className="relative group"
+                data-testid={`nav-${item.label
+                  .toLowerCase()
+                  .replace(" ", "-")}`}
+              >
+                <Link
                   href={item.href}
-                  className={`text-gray-700 hover:text-orange-500 transition-colors ${
-                    item.label === "About Us" ? "text-orange-500 font-semibold" : ""
-                  }`}
+                  className="font-medium text-black text-lg hover:text-[#f3aa45] transition-colors duration-300 whitespace-nowrap"
                 >
                   {item.label}
                 </Link>
+
+                {/* Mega Menu for Services */}
                 {item.hasMenu && (
-                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-[300px] bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20">
-                    <div className="p-6">
-                      <h3 className="text-lg font-semibold text-gray-900 mb-4">Our Services</h3>
-                      <div className="grid gap-3">
-                        {servicesMenuItems.map((menuItem, idx) => (
-                          <Link
-                            key={idx}
-                            href={menuItem.href}
-                            className="block p-3 rounded-md hover:bg-gray-50 text-gray-700 hover:text-orange-500 transition-colors"
-                          >
-                            {menuItem.label}
-                          </Link>
-                        ))}
-                      </div>
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 bg-white rounded-2xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20 px-10 py-8">
+                    {/* Pointer */}
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 bg-white rotate-45 shadow-md"></div>
+
+                    {/* 3-Column Grid */}
+                    <div className="flex gap-16">
+                      {servicesMenuItems.map((section, idx) => (
+                        <div key={idx} className="flex flex-col gap-3">
+                          <h3 className="font-semibold text-[15px] text-[#1a1a40]">
+                            {section.title}
+                          </h3>
+                          <ul className="space-y-2">
+                            {section.items.map((subItem, i) => (
+                              <li
+                                key={i}
+                                className="text-gray-600 text-sm hover:text-[#ed2628] transition"
+                              >
+                                {subItem}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 )}
               </div>
             ))}
           </nav>
-          <button 
-            className="md:hidden text-gray-700 p-2" 
+
+          {/* Mobile Menu Button */}
+          <button
+            className="lg:hidden text-white p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            data-testid="mobile-menu-button"
           >
-            {isMobileMenuOpen ? "✕" : "☰"}
+            {isMobileMenuOpen ? (
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            ) : (
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            )}
           </button>
         </div>
+        {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-lg z-30">
-            <div className="px-6 py-4 space-y-4">
+          <div
+            className="lg:hidden absolute top-full left-0 w-full bg-black/90 backdrop-blur-md z-30"
+            data-testid="mobile-menu"
+          >
+            <div className="px-4 py-6 space-y-4">
               {navigationItems.map((item, index) => (
-                <Link 
-                  key={index}
-                  href={item.href}
-                  className="block py-2 text-gray-700 hover:text-orange-500 transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {item.label}
-                </Link>
+                <div key={index}>
+                  <Link
+                    href={item.href}
+                    className="block py-3 px-4 text-white hover:text-[#f3aa45] transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    data-testid={`mobile-nav-${item.label
+                      .toLowerCase()
+                      .replace(" ", "-")}`}
+                  >
+                    {item.label}
+                  </Link>
+                  {/* Mega Menu for Services */}
+                  {item.hasMenu && (
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 bg-white rounded-2xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20 px-10 py-8">
+                      {/* Pointer */}
+                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 bg-white rotate-45 shadow-md"></div>
+
+                      {/* 3-Column Grid */}
+                      <div className="flex gap-16">
+                        {servicesMenuItems.map((section, idx) => (
+                          <div key={idx} className="flex flex-col gap-3">
+                            <h3 className="font-semibold text-[15px] text-[#1a1a40]">
+                              {section.title}
+                            </h3>
+                            <ul className="space-y-2">
+                              {section.items.map((subItem, i) => (
+                                <li
+                                  key={i}
+                                  className="text-gray-600 text-sm hover:text-[#ed2628] transition"
+                                >
+                                  {subItem}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
               ))}
             </div>
           </div>

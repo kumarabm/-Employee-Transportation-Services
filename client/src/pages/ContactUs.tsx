@@ -1,17 +1,18 @@
+import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 
 const ContactUs = () => {
- const navigationItems = [
-  { label: "About Us", href: "/about-us" },
-  { label: "Services", href: "#services", hasMenu: true },
-  { label: "Tour Packages", href: "/employee-transportation-services" },
-  { label: "Luxury Car Rentals", href: "/" },
-  { label: "Clients", href: "/clients" },
-  { label: "Contact Us", href: "/contact-us" },
-];
-  
+  const navigationItems = [
+    { label: "About Us", href: "/about-us" },
+    { label: "Services", href: "#services", hasMenu: true },
+    { label: "Tour Packages", href: "/employee-transportation-services" },
+    { label: "Luxury Car Rentals", href: "/" },
+    { label: "Clients", href: "/clients" },
+    { label: "Contact Us", href: "/contact-us" },
+  ];
+
   const companyLogos = [
     { name: "Google", src: "/figmaAssets/google-logo.png" },
     { name: "Creative", src: "/figmaAssets/creative-logo.png" },
@@ -29,109 +30,289 @@ const ContactUs = () => {
     {
       icon: "🚗",
       title: "Executive Chauffeur Services",
-      description: "Discreet, professional chauffeurs for directors, VIPs, and senior leadership.",
-      color: "bg-blue-100"
+      description:
+        "Discreet, professional chauffeurs for directors, VIPs, and senior leadership.",
+      color: "bg-blue-100",
     },
     {
       icon: "✈️",
       title: "Airport Transfers",
-      description: "Punctual pickups and drop-offs with live flight tracking and zero waiting time.",
-      color: "bg-yellow-100"
+      description:
+        "Punctual pickups and drop-offs with live flight tracking and zero waiting time.",
+      color: "bg-yellow-100",
     },
     {
       icon: "👥",
       title: "Employee Commute Programs",
-      description: "Safe, app-tracked transportation for staff with route optimization and rostering.",
-      color: "bg-orange-100"
+      description:
+        "Safe, app-tracked transportation for staff with route optimization and rostering.",
+      color: "bg-orange-100",
     },
     {
       icon: "🌍",
       title: "Expat & Guest Handling",
-      description: "Hospitality-trained chauffeurs and multilingual support for global visitors and delegations.",
-      color: "bg-purple-100"
+      description:
+        "Hospitality-trained chauffeurs and multilingual support for global visitors and delegations.",
+      color: "bg-purple-100",
     },
     {
       icon: "📊",
       title: "Centralized Billing & MIS Reports",
-      description: "Transparent invoicing with detailed ride history, analytics, and corporate summaries.",
-      color: "bg-cyan-100"
+      description:
+        "Transparent invoicing with detailed ride history, analytics, and corporate summaries.",
+      color: "bg-cyan-100",
     },
     {
       icon: "📱",
       title: "App-Based Booking & Trip Management",
-      description: "Real-time tracking, instant bookings, and secure ride monitoring via our digital platform.",
-      color: "bg-yellow-100"
+      description:
+        "Real-time tracking, instant bookings, and secure ride monitoring via our digital platform.",
+      color: "bg-yellow-100",
     },
   ];
 
+  const servicesMenuItems = [
+    {
+      title: "Corporate Mobility Solutions",
+      items: [
+        "Employee Transportation",
+        "Employee Trips",
+        "Executive Leasing",
+        "Roster Planning & Routing",
+        "Management Reporting",
+        "Systemized Billing",
+        "Transport Desk & Ticketing",
+      ],
+    },
+    {
+      title: "Event & Custom Travel",
+      items: [
+        "Events & Seminars",
+        "Elite Weddings",
+        "Family Events & Holidays",
+        "Customized Tours",
+      ],
+    },
+    {
+      title: "Tour & Rental Services",
+      items: [
+        "Pilgrim Tours",
+        "Package Tours",
+        "Premium Rent-a-Cab",
+        "Ticketing",
+      ],
+    },
+  ];
+
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
-     <div className="min-h-screen flex flex-col bg-white">
-              {/* Top Contact Bar */}
+    <div className="min-h-screen flex flex-col bg-white">
+      {/* Top Contact Bar */}
       <div className="w-full bg-gray-100 py-2 text-center text-sm text-gray-600">
         <span>+91 44 4953 0055 | +91 98400 27990 | +91 91767 81444</span>
       </div>
 
-            {/* Header Navigation */}
+      {/* Header Navigation */}
       <header className="w-full bg-white shadow-sm py-4">
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           <Link href="/">
             <div className="flex items-center">
-              <img src="/figmaAssets/background--3--1.png" alt="Entrex" className="h-12" />
+              <img
+                src="/figmaAssets/background--3--1.png"
+                alt="Entrex"
+                className="h-12"
+              />
             </div>
           </Link>
-          <nav className="hidden md:flex space-x-8">
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-8 2xl:gap-[50px]">
             {navigationItems.map((item, index) => (
-              <Link 
-                key={index} 
-                href={item === "Clients" ? "/clients" : "/"}
-                className={`text-gray-700 hover:text-orange-500 transition-colors ${
-                  item === "Clients" ? "text-orange-500 font-semibold" : ""
-                }`}
+              <div
+                key={index}
+                className="relative group"
+                data-testid={`nav-${item.label
+                  .toLowerCase()
+                  .replace(" ", "-")}`}
               >
-                {item}
-              </Link>
+                <Link
+                  href={item.href}
+                  className="font-medium text-black text-lg hover:text-[#f3aa45] transition-colors duration-300 whitespace-nowrap"
+                >
+                  {item.label}
+                </Link>
+
+                {/* Mega Menu for Services */}
+                {item.hasMenu && (
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 bg-white rounded-2xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20 px-10 py-8">
+                    {/* Pointer */}
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 bg-white rotate-45 shadow-md"></div>
+
+                    {/* 3-Column Grid */}
+                    <div className="flex gap-16">
+                      {servicesMenuItems.map((section, idx) => (
+                        <div key={idx} className="flex flex-col gap-3">
+                          <h3 className="font-semibold text-[15px] text-[#1a1a40]">
+                            {section.title}
+                          </h3>
+                          <ul className="space-y-2">
+                            {section.items.map((subItem, i) => (
+                              <li
+                                key={i}
+                                className="text-gray-600 text-sm hover:text-[#ed2628] transition"
+                              >
+                                {subItem}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
             ))}
           </nav>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="lg:hidden text-white p-2"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            data-testid="mobile-menu-button"
+          >
+            {isMobileMenuOpen ? (
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            ) : (
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            )}
+          </button>
         </div>
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div
+            className="lg:hidden absolute top-full left-0 w-full bg-black/90 backdrop-blur-md z-30"
+            data-testid="mobile-menu"
+          >
+            <div className="px-4 py-6 space-y-4">
+              {navigationItems.map((item, index) => (
+                <div key={index}>
+                  <Link
+                    href={item.href}
+                    className="block py-3 px-4 text-white hover:text-[#f3aa45] transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    data-testid={`mobile-nav-${item.label
+                      .toLowerCase()
+                      .replace(" ", "-")}`}
+                  >
+                    {item.label}
+                  </Link>
+                  {/* Mega Menu for Services */}
+                  {item.hasMenu && (
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 bg-white rounded-2xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20 px-10 py-8">
+                      {/* Pointer */}
+                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 bg-white rotate-45 shadow-md"></div>
+
+                      {/* 3-Column Grid */}
+                      <div className="flex gap-16">
+                        {servicesMenuItems.map((section, idx) => (
+                          <div key={idx} className="flex flex-col gap-3">
+                            <h3 className="font-semibold text-[15px] text-[#1a1a40]">
+                              {section.title}
+                            </h3>
+                            <ul className="space-y-2">
+                              {section.items.map((subItem, i) => (
+                                <li
+                                  key={i}
+                                  className="text-gray-600 text-sm hover:text-[#ed2628] transition"
+                                >
+                                  {subItem}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </header>
 
-            {/* What We Offer Section */}
-            <section className="py-16 bg-gray-50">
-              <div className="max-w-6xl mx-auto px-6">
-                <h2 className="text-3xl font-bold text-center mb-4 text-gray-900">What We Offer</h2>
-                <p className="text-gray-600 text-center mb-12 max-w-3xl mx-auto">
-                  Our services are designed to meet your business requirements, offering seamless, safe, and reliable ground transportation.
-                </p>
-                
-                <div className="grid md:grid-cols-3 gap-8">
-                  {services.map((service, index) => (
-                    <Card key={index} className={`p-6 text-center ${service.color} border-0 shadow-md hover:shadow-lg transition-shadow`}>
-                      <CardContent className="p-0">
-                        <div className="text-4xl mb-4">{service.icon}</div>
-                        <h3 className="font-semibold text-lg mb-3 text-gray-900">{service.title}</h3>
-                        <p className="text-gray-700 text-sm leading-relaxed">{service.description}</p>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-                
-                <div className="text-center mt-12">
-                  <Button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full">
-                    Contact Us
-                  </Button>
-                </div>
-              </div>
-            </section>
+      {/* What We Offer Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl font-bold text-center mb-4 text-gray-900">
+            What We Offer
+          </h2>
+          <p className="text-gray-600 text-center mb-12 max-w-3xl mx-auto">
+            Our services are designed to meet your business requirements,
+            offering seamless, safe, and reliable ground transportation.
+          </p>
 
-                  {/* Hero Section */}
+          <div className="grid md:grid-cols-3 gap-8">
+            {services.map((service, index) => (
+              <Card
+                key={index}
+                className={`p-6 text-center ${service.color} border-0 shadow-md hover:shadow-lg transition-shadow`}
+              >
+                <CardContent className="p-0">
+                  <div className="text-4xl mb-4">{service.icon}</div>
+                  <h3 className="font-semibold text-lg mb-3 text-gray-900">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-700 text-sm leading-relaxed">
+                    {service.description}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full">
+              Contact Us
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Hero Section */}
       <section className="py-16 text-center bg-white">
         <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
           Trusted by 1500+ popular companies
         </h1>
         <p className="text-gray-600 max-w-3xl mx-auto mb-12 text-lg">
-          Every ENTREX ride comes with thoughtful in-car provisions to ensure your comfort, safety, and satisfaction.
+          Every ENTREX ride comes with thoughtful in-car provisions to ensure
+          your comfort, safety, and satisfaction.
         </p>
-        
+
         {/* Company Logos Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 max-w-6xl mx-auto px-6">
           {companyLogos.map((company, index) => (
@@ -149,55 +330,104 @@ const ContactUs = () => {
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-4 gap-8">
             <div>
-              <img src="/figmaAssets/background--3--1.png" alt="Entrex" className="h-12 mb-4" />
+              <img
+                src="/figmaAssets/background--3--1.png"
+                alt="Entrex"
+                className="h-12 mb-4"
+              />
               <p className="text-gray-600 text-sm leading-relaxed">
-                Entrex has been serving Pune for several months. Offering our corporate clientele, the most reliable corporate transport service in Pune.
+                Entrex has been serving Pune for several months. Offering our
+                corporate clientele, the most reliable corporate transport
+                service in Pune.
               </p>
             </div>
-            
+
             <div>
               <h3 className="font-semibold mb-4 text-gray-900">Company</h3>
               <div className="space-y-2 text-sm">
-                <div><a href="#" className="text-gray-600 hover:text-gray-900">About</a></div>
-                <div><a href="#" className="text-gray-600 hover:text-gray-900">Features</a></div>
-                <div><a href="#" className="text-gray-600 hover:text-gray-900">Services</a></div>
-                <div><a href="#" className="text-gray-600 hover:text-gray-900">Packages</a></div>
+                <div>
+                  <a href="#" className="text-gray-600 hover:text-gray-900">
+                    About
+                  </a>
+                </div>
+                <div>
+                  <a href="#" className="text-gray-600 hover:text-gray-900">
+                    Features
+                  </a>
+                </div>
+                <div>
+                  <a href="#" className="text-gray-600 hover:text-gray-900">
+                    Services
+                  </a>
+                </div>
+                <div>
+                  <a href="#" className="text-gray-600 hover:text-gray-900">
+                    Packages
+                  </a>
+                </div>
               </div>
             </div>
-            
+
             <div>
               <h3 className="font-semibold mb-4 text-gray-900">Support</h3>
               <div className="space-y-2 text-sm">
-                <div><a href="#" className="text-gray-600 hover:text-gray-900">Team Solutions</a></div>
-                <div><a href="#" className="text-gray-600 hover:text-gray-900">Features</a></div>
-                <div><a href="#" className="text-gray-600 hover:text-gray-900">Privacy and Security</a></div>
-                <div><a href="#" className="text-gray-600 hover:text-gray-900">Resources</a></div>
+                <div>
+                  <a href="#" className="text-gray-600 hover:text-gray-900">
+                    Team Solutions
+                  </a>
+                </div>
+                <div>
+                  <a href="#" className="text-gray-600 hover:text-gray-900">
+                    Features
+                  </a>
+                </div>
+                <div>
+                  <a href="#" className="text-gray-600 hover:text-gray-900">
+                    Privacy and Security
+                  </a>
+                </div>
+                <div>
+                  <a href="#" className="text-gray-600 hover:text-gray-900">
+                    Resources
+                  </a>
+                </div>
               </div>
             </div>
-            
+
             <div>
               <h3 className="font-semibold mb-4 text-gray-900">Contact</h3>
               <div className="space-y-2 text-sm text-gray-600">
-                <div>2nd Floor, Thakor Plaza, SG No. 305-306,<br />Pune 411014</div>
+                <div>
+                  2nd Floor, Thakor Plaza, SG No. 305-306,
+                  <br />
+                  Pune 411014
+                </div>
                 <div>bookings@entrex.in</div>
                 <div>+91 44 4953 0055</div>
               </div>
             </div>
           </div>
-          
+
           <div className="border-t border-gray-200 mt-12 pt-8 flex justify-between items-center">
-            <p className="text-gray-600 text-sm">Copyright © 2024 Entrex. All Rights Reserved.</p>
+            <p className="text-gray-600 text-sm">
+              Copyright © 2024 Entrex. All Rights Reserved.
+            </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-600 hover:text-gray-900">Terms of Service</a>
-              <a href="#" className="text-gray-600 hover:text-gray-900">Privacy Policy</a>
-              <a href="#" className="text-gray-600 hover:text-gray-900">Cookies</a>
+              <a href="#" className="text-gray-600 hover:text-gray-900">
+                Terms of Service
+              </a>
+              <a href="#" className="text-gray-600 hover:text-gray-900">
+                Privacy Policy
+              </a>
+              <a href="#" className="text-gray-600 hover:text-gray-900">
+                Cookies
+              </a>
             </div>
           </div>
         </div>
       </footer>
-      
-     </div>
+    </div>
   );
-}
+};
 
 export default ContactUs;
