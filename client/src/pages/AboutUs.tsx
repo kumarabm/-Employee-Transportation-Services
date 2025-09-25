@@ -6,8 +6,17 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Star, ChevronDown } from "lucide-react";
-import mugundhanImg from "../../../attached_assets/4388243b170dd9d4c60f4aac1c90e1116efbd5c5.png"
-import balajiImg from "../../../attached_assets/b50e807326be58e8dae4929f129342f08b6a8c84.png"
+import mugundhanImg from "../../../attached_assets/4388243b170dd9d4c60f4aac1c90e1116efbd5c5.png";
+import balajiImg from "../../../attached_assets/b50e807326be58e8dae4929f129342f08b6a8c84.png";
+import man from "../pages/Assets/backman.png";
+import { ArrowRightIcon } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
  const navigationItems = [
   { label: "About Us", href: "/about-us" },
@@ -70,21 +79,21 @@ const AboutUsPage = (): JSX.Element => {
 
   const testimonials = [
     {
-      name: "Rajesh Kumar",
-      role: "Corporate Executive, Mumbai",
-      text: "ENTREX has transformed our corporate travel experience. Professional, reliable, and always on time.",
+      name: "Ramesh Iyer",
+      role: "Cricket Enthusiast, Mumbai",
+      text: "“Reliable, courteous, and always on time. ENTREX is more than a transport provider—they’re our mobility partner.”",
       rating: 5
     },
     {
-      name: "Priya Sharma", 
-      role: "Event Manager, Delhi",
-      text: "Excellent service for our company events. The chauffeurs are courteous and vehicles are pristine.",
+      name: "Sneha Pillai", 
+      role: "Fitness Coach, Bangalore",
+      text: "As an expat, I felt completely at ease with ENTREX. Every ride was smooth, safe, and incredibly professional.",
       rating: 5
     },
     {
-      name: "Michael Johnson",
-      role: "Expat Executive, Bangalore", 
-      text: "As an international client, I appreciate the multilingual support and seamless service quality.",
+      name: "Ayaan Khan",
+      role: "School Football Coach, Delhi", 
+      text: "Best football I’ve used in a while. My entire team now orders from here – reliable and affordable.",
       rating: 5
     }
   ];
@@ -141,6 +150,124 @@ const AboutUsPage = (): JSX.Element => {
     }
   ];
 
+   // FAQs
+  const leftColumnFaqs = [
+    {
+      id: "item-1",
+      question: "What is Webflow and why is it the best website builder?",
+      answer:
+        "Vitae congue eu consequat ac felis placerat vestibulum lectus mauris ultrices. Cursus sit amet dictum sit amet justo donec enim diam porttitor lacus luctus accumsan tortor posuere.",
+      isExpanded: true,
+    },
+    {
+      id: "item-2",
+      question: "What is your favorite template from BRIX Templates?",
+      answer: "",
+      isExpanded: false,
+    },
+    {
+      id: "item-3",
+      question: "How do you clone a template from the Showcase?",
+      answer: "",
+      isExpanded: false,
+    },
+    {
+      id: "item-4",
+      question: "Why is BRIX Templates the best Webflow agency?",
+      answer: "",
+      isExpanded: false,
+    },
+    {
+      id: "item-5",
+      question: "When was Webflow officially launched?",
+      answer: "",
+      isExpanded: false,
+    },
+    {
+      id: "item-6",
+      question: "How do you integrate Jetboost with Webflow?",
+      answer: "",
+      isExpanded: false,
+    },
+  ];
+
+  const rightColumnFaqs = [
+    {
+      id: "item-7",
+      question: "What is your favorite template from BRIX Templates?",
+      answer: "",
+      isExpanded: false,
+    },
+    {
+      id: "item-8",
+      question: "How do you clone a template from the Showcase?",
+      answer: "",
+      isExpanded: false,
+    },
+    {
+      id: "item-9",
+      question: "What is Webflow and why is it the best website builder?",
+      answer:
+        "Vitae congue eu consequat ac felis placerat vestibulum lectus mauris ultrices. Cursus sit amet dictum sit amet justo donec enim diam porttitor lacus luctus accumsan tortor posuere.",
+      isExpanded: true,
+    },
+    {
+      id: "item-10",
+      question: "Why is BRIX Templates the best Webflow agency?",
+      answer: "",
+      isExpanded: false,
+    },
+    {
+      id: "item-11",
+      question: "When was Webflow officially launched?",
+      answer: "",
+      isExpanded: false,
+    },
+    {
+      id: "item-12",
+      question: "How do you integrate Jetboost with Webflow?",
+      answer: "",
+      isExpanded: false,
+    },
+  ];
+
+  // News & Updates
+  const newsUpdates = [
+    {
+      id: 1,
+      title: "Surviving through tough times as a first time SaaS…",
+      description:
+        "Self-service data analytics software that lets you create visually appealing data visualizations and insightful dashboards in minutes.",
+      category: "BUSINESS",
+      categoryColor: "bg-[#ffe9d9]",
+      date: "Oct 3",
+      readTime: "7 min read",
+      image: "/figmaAssets/mask-group-1.png",
+    },
+    {
+      id: 2,
+      title: "SaaS customer development and no-code prototypes",
+      description:
+        "Self-service data analytics software that lets you create visually appealing data visualizations and insightful dashboards in minutes.",
+      category: "MARKETING",
+      categoryColor: "bg-[#d8f4fc]",
+      date: "Oct 3",
+      readTime: "7 min read",
+      image: "/figmaAssets/image.png",
+    },
+    {
+      id: 3,
+      title: "Highnote Emerges from Stealth with $54 Million in …",
+      description:
+        "Self-service data analytics software that lets you create visually appealing data visualizations and insightful dashboards in minutes.",
+      category: "ANALYTICS",
+      categoryColor: "bg-[#e0f8de]",
+      date: "Oct 3",
+      readTime: "7 min read",
+      image: "/figmaAssets/mask-group.png",
+    },
+  ];
+
   const servicesMenuItems = [
     {
       title: "Corporate Mobility Solutions",
@@ -173,6 +300,7 @@ const AboutUsPage = (): JSX.Element => {
       ],
     },
   ];
+
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
@@ -369,7 +497,7 @@ const AboutUsPage = (): JSX.Element => {
             {/* Right Column - Team Image */}
             <div className="relative overflow-hidden rounded-2xl shadow-xl order-1 lg:order-2">
               <img 
-                src="/attached_assets/stock_images/professional_team_co_22a82585.jpg"
+                src={man}
                 alt="Professional team collaboration at ENTREX"
                 className="w-full h-[400px] lg:h-[500px] object-cover"
               />
@@ -577,13 +705,18 @@ const AboutUsPage = (): JSX.Element => {
         </div>
       </section>
 
-      {/* Trusted by Companies */}
+{/* Trusted by Companies */}
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">
+          <h1 className="text-3xl font-bold text-center mb-12 text-gray-900">
             Trusted by 1500+ popular companies
-          </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8">
+          </h1>
+          <p className="mx-auto mt-[-40px] w-fit font-medium text-black text-xs xs:text-base text-center tracking-[0] leading-relaxed whitespace-nowrap">
+            Every ENTREX ride comes with thoughtful in-car provisions to ensure
+            your comfort, safety, and satisfaction.
+          </p>
+
+          {/* <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8">
             {companies.map((company, index) => (
               <div key={index} className="flex items-center justify-center h-16">
                 <div className="text-gray-400 font-semibold text-lg text-center">
@@ -591,95 +724,200 @@ const AboutUsPage = (): JSX.Element => {
                 </div>
               </div>
             ))}
-          </div>
+          </div> */}
+        </div>
+        <div className="w-full flex justify-center">
+          <img
+            className="w-[900px] h-[350px] object-contain"
+            alt="Logos"
+            src="/figmaAssets/logos.png"
+          />
         </div>
       </section>
 
       {/* Certifications Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex justify-between items-center">
-            <div className="text-center bg-white rounded-lg p-8 w-[280px] shadow-md">
-              <img src="/figmaAssets/itta-logo1-1.png" alt="ITTA" className="h-20 mx-auto mb-4" />
-              <p className="text-sm font-bold text-gray-800 mb-2">Affiliations: ITTA – Indian</p>
-              <p className="text-sm font-bold text-gray-800 mb-4">Association of Tour Operators</p>
-              <p className="text-xs text-gray-600 leading-relaxed">
-                Certified member ensuring quality standards and professional service delivery.
+            <div className="text-center bg-white rounded-lg p-8 w-[280px]">
+              <img
+                src="/figmaAssets/itta-logo1-1.png"
+                alt="ITTA"
+                className="w-[275px] h-[183px] object-cover"
+              />
+              &nbsp;
+              <p className="text-sm font-bold text-gray-800 mb-2 lg:text-left">
+                Affiliations: ITTA – Indian Association of Tour Operators
+              </p>
+              <p className="text-xs text-gray-600 leading-relaxed lg:text-left">
+                We offer GPS-enabled rides so you—and your loved ones—can track
+                your journey with full transparency.
               </p>
             </div>
-            
+
             <div className="relative flex-1 flex justify-center">
-              <img src="/figmaAssets/golden-olive-foliage-branches-decorative-ornament-frame-1.png" alt="Certification Frame" className="h-48" />
+              <img
+                src="/figmaAssets/golden-olive-foliage-branches-decorative-ornament-frame-1.png"
+                alt="Certification Frame"
+                className="h-100"
+              />
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-gray-900 mb-1">Our</div>
-                  <div className="text-3xl font-bold text-gray-900">Certifications</div>
+                  <div className="text-3xl font-bold text-gray-900 mb-1">
+                    Our
+                  </div>
+                  <div className="text-3xl font-bold text-gray-900">
+                    Certifications
+                  </div>
                 </div>
               </div>
             </div>
-            
-            <div className="text-center bg-white rounded-lg p-8 w-[280px] shadow-md">
-              <img src="/figmaAssets/iato-1.png" alt="IATO" className="h-20 mx-auto mb-4" />
-              <p className="text-sm font-bold text-gray-800 mb-2">Affiliations: IATO – Indian</p>
-              <p className="text-sm font-bold text-gray-800 mb-4">Association of Tour Operators</p>
-              <p className="text-xs text-gray-600 leading-relaxed">
-                Licensed operator providing reliable and secure transportation services.
+
+            <div className="text-center bg-white rounded-lg p-8 w-[280px]">
+              <img
+                src="/figmaAssets/iato-1.png"
+                alt="IATO"
+                className="w-[275px] h-[183px] object-cover"
+              />
+              &nbsp;
+              <p className="text-sm font-bold text-gray-800 mb-2 lg:text-left">
+                Affiliations: IATO – Indian Association of Tour Operators
+              </p>
+              <p className="text-xs text-gray-600 leading-relaxed lg:text-left">
+                We offer GPS-enabled rides so you—and your loved ones—can track
+                your journey with full transparency.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Frequently Asked Questions */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
-            Frequently Asked Questions (FAQs)
-          </h2>
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <div key={index} className="border border-gray-200 rounded-lg">
-                <button
-                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50"
-                  onClick={() => setExpandedFAQ(expandedFAQ === index ? null : index)}
-                >
-                  <span className="font-semibold text-gray-900">{faq.question}</span>
-                  <ChevronDown 
-                    className={`w-5 h-5 text-gray-500 transition-transform ${
-                      expandedFAQ === index ? 'transform rotate-180' : ''
-                    }`}
-                  />
-                </button>
-                {expandedFAQ === index && (
-                  <div className="px-6 pb-4">
-                    <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
-                  </div>
-                )}
-              </div>
-            ))}
+      {/* Frequently Asked Questions Section */}
+      <section id="faqs" className="py-20 bg-white">
+        <div className="flex flex-col items-center max-w-[1200px] mx-auto px-4">
+          <div className="flex flex-col items-center text-center mb-12">
+            <div className="w-fit bg-[linear-gradient(103deg,rgba(255,156,18,1)_0%,rgba(255,0,0,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] font-bold text-lg tracking-[1.86px] leading-[28.0px] mb-4">
+              FAQ
+            </div>
+
+            <h2 className="font-bold text-[#111827] text-3xl lg:text-5xl xl:text-[62.7px] text-center tracking-[-1.60px] leading-tight mb-6">
+              Frequently Asked Questions (FAQs)
+            </h2>
+
+            <p className="font-normal text-[#111827] text-base lg:text-lg text-center tracking-[0] leading-relaxed max-w-[800px]">
+              Got questions? We've got answers! Find solutions to common queries
+              about our services, processes, and technology.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 max-w-[1200px] mx-auto">
+            <div className="w-full">
+              <Accordion type="single" collapsible defaultValue="item-1">
+                {leftColumnFaqs.map((faq) => (
+                  <AccordionItem
+                    key={faq.id}
+                    value={faq.id}
+                    className="border-b border-gray-300"
+                  >
+                    <AccordionTrigger className="text-left font-bold text-[#0093ff] data-[state=closed]:text-[#303a42] text-lg lg:text-xl tracking-[0] leading-tight hover:no-underline py-4">
+                      {faq.question}
+                    </AccordionTrigger>
+                    {faq.answer && (
+                      <AccordionContent className="font-normal text-[#303a42] text-sm lg:text-base tracking-[0] leading-relaxed pb-6">
+                        {faq.answer}
+                      </AccordionContent>
+                    )}
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
+
+            <div className="w-full">
+              <Accordion type="single" collapsible defaultValue="item-9">
+                {rightColumnFaqs.map((faq) => (
+                  <AccordionItem
+                    key={faq.id}
+                    value={faq.id}
+                    className="border-b border-gray-300"
+                  >
+                    <AccordionTrigger className="text-left font-bold text-[#0093ff] data-[state=closed]:text-[#303a42] text-lg lg:text-xl tracking-[0] leading-tight hover:no-underline py-4">
+                      {faq.question}
+                    </AccordionTrigger>
+                    {faq.answer && (
+                      <AccordionContent className="font-normal text-[#303a42] text-sm lg:text-base tracking-[0] leading-relaxed pb-6">
+                        {faq.answer}
+                      </AccordionContent>
+                    )}
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* News & Updates */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">News & Updates</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {newsItems.map((item, index) => (
-              <Card key={index} className="overflow-hidden shadow-md hover:shadow-lg transition-shadow bg-white">
-                <img 
-                  src={item.image} 
-                  alt={item.title}
-                  className="w-full h-48 object-cover"
-                />
-                <CardContent className="p-6">
-                  <div className="text-sm text-gray-500 mb-2">{item.date}</div>
-                  <h3 className="font-bold text-lg mb-3 text-gray-900">{item.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{item.description}</p>
-                </CardContent>
-              </Card>
+      {/* News & Updates Section */}
+      <section className="py-12 md:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="text-center mb-10 md:mb-14">
+            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900">
+              News & Updates
+            </h2>
+          </div>
+
+          {/* Articles Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {newsUpdates.map((news) => (
+              <div
+                key={news.id}
+                className="rounded-xl border border-gray-200 overflow-hidden shadow-sm flex flex-col"
+              >
+                {/* Image */}
+                <div className="h-40 md:h-48 bg-gradient-to-br from-blue-50 to-orange-50">
+                  <img
+                    src={news.image}
+                    alt="Article image"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                {/* Content */}
+                <div className="p-5 flex flex-col justify-between flex-grow">
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                      {news.title}
+                    </h3>
+                    <p className="text-sm text-gray-600 mb-4">
+                      {news.description}
+                    </p>
+                  </div>
+
+                  {/* Footer */}
+                  <div className="flex items-center justify-between">
+                    <Badge
+                      className={`${news.categoryColor} text-gray-0 font-bold text-base tracking-[1.14px] [font-family:'Inter',Helvetica] rounded-[21.33px] px-4 py-2 h-8`}
+                    >
+                      {news.category}
+                    </Badge>
+                    <span>
+                      {news.date} · {news.readTime}
+                    </span>
+                  </div>
+                </div>
+              </div>
             ))}
+          </div>
+
+          {/* View More Button */}
+          <div className="flex justify-center mt-10">
+            <Button
+              variant="ghost"
+              className="text-blue-600 text-base md:text-lg font-medium hover:bg-transparent flex items-center gap-2"
+            >
+              View more articles
+              <ArrowRightIcon className="w-5 h-5" />
+            </Button>
           </div>
         </div>
       </section>

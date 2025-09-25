@@ -10,6 +10,16 @@ import { NewsUpdatesSection } from "./sections/NewsUpdatesSection";
 import { OurServicesSection } from "./sections/OurServicesSection";
 import { TrustedBySection } from "./sections/TrustedBySection";
 import { WhyChooseUsSection } from "./sections/WhyChooseUsSection";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
 
 const navigationItems = [
   { label: "About Us", href: "/about-us" },
@@ -428,17 +438,254 @@ const EntrexLandingPage = (): JSX.Element => {
         </div>
 
         <WhyChooseUsSection />
-        <HeroSection />
+
+        {/* Certifications Section */}
+            <section className="py-16">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="flex justify-between items-center">
+            <div className="text-center bg-white rounded-lg p-8 w-[280px]">
+              <img
+                src="/figmaAssets/itta-logo1-1.png"
+                alt="ITTA"
+                className="w-[275px] h-[183px] object-cover"
+              />
+              &nbsp;
+              <p className="text-sm font-bold text-gray-800 mb-2 lg:text-left">
+                Affiliations: ITTA – Indian
+                Association of Tour Operators
+              </p>
+              <p className="text-xs text-gray-600 leading-relaxed lg:text-left">
+                We offer GPS-enabled rides so you—and your loved ones—can track your journey with full transparency.
+              </p>
+            </div>
+
+            <div className="relative flex-1 flex justify-center">
+              <img
+                src="/figmaAssets/golden-olive-foliage-branches-decorative-ornament-frame-1.png"
+                alt="Certification Frame"
+                className="h-100"
+              />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-gray-900 mb-1">
+                    Our
+                  </div>
+                  <div className="text-3xl font-bold text-gray-900">
+                    Certifications
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="text-center bg-white rounded-lg p-8 w-[280px]">
+              <img
+                src="/figmaAssets/iato-1.png"
+                alt="IATO"
+                className="w-[275px] h-[183px] object-cover"
+              />
+              &nbsp;
+              <p className="text-sm font-bold text-gray-800 mb-2 lg:text-left">
+                Affiliations: IATO – Indian
+                Association of Tour Operators
+              </p>
+              <p className="text-xs text-gray-600 leading-relaxed lg:text-left">
+                We offer GPS-enabled rides so you—and your loved ones—can track your journey with full transparency.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
         <CallToActionSection />
         <FAQsSection />
-        <InCarProvisionsSection />
+        {/* Let's Talk Section */}
+             <section className="py-16 bg-white">
+               <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12">
+                 <div>
+                   <h2 className="text-3xl font-bold mb-6 text-gray-900">
+                     Let's Talk
+                   </h2>
+       
+                   <div className="mb-8">
+                     <h3 className="font-semibold mb-2 text-gray-900">Email</h3>
+                     <p className="text-gray-600">
+                       <a
+                         href="mailto:bookings@entrex.in"
+                         className="text-blue-600 hover:underline"
+                       >
+                         bookings@entrex.in
+                       </a>
+                     </p>
+                   </div>
+       
+                   <div>
+                     <h3 className="font-semibold mb-4 text-gray-900">Socials</h3>
+                     <div className="space-y-2">
+                       <div>
+                         <a href="#" className="text-blue-600 hover:underline">
+                           Instagram
+                         </a>
+                       </div>
+                       <div>
+                         <a href="#" className="text-blue-600 hover:underline">
+                           Twitter
+                         </a>
+                       </div>
+                       <div>
+                         <a href="#" className="text-blue-600 hover:underline">
+                           Facebook
+                         </a>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+       
+                 <div>
+                   <form className="space-y-6">
+                     <div className="grid md:grid-cols-2 gap-4">
+                       <Input placeholder="Name" className="border-gray-300" />
+                       <Input
+                         placeholder="Email"
+                         type="email"
+                         className="border-gray-300"
+                       />
+                     </div>
+       
+                     <Select>
+                       <SelectTrigger className="border-gray-300">
+                         <SelectValue placeholder="What service are you interested in" />
+                       </SelectTrigger>
+                       <SelectContent>
+                         <SelectItem value="chauffeur">Chauffeur Services</SelectItem>
+                         <SelectItem value="airport">Airport Transfers</SelectItem>
+                         <SelectItem value="commute">Employee Commute</SelectItem>
+                       </SelectContent>
+                     </Select>
+       
+                     <Select>
+                       <SelectTrigger className="border-gray-300">
+                         <SelectValue placeholder="Budget" />
+                       </SelectTrigger>
+                       <SelectContent>
+                         <SelectItem value="low">Below $500</SelectItem>
+                         <SelectItem value="med">$500 - $2000</SelectItem>
+                         <SelectItem value="high">Above $2000</SelectItem>
+                       </SelectContent>
+                     </Select>
+       
+                     <Textarea
+                       placeholder="Message"
+                       className="border-gray-300 min-h-[120px]"
+                     />
+       
+                     <Button className="w-full bg-black hover:bg-gray-800 text-white py-3 rounded">
+                       SUBMIT
+                     </Button>
+                   </form>
+                 </div>
+               </div>
+             </section>
 
-        {/* Footer */}
-        <img
-          className="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[666px] object-cover"
-          alt="Footer"
-          src="/figmaAssets/footer-1.png"
-        />
+       {/* Footer */}
+      <footer className="bg-white text-gray-900 py-12 border-t border-gray-200">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid md:grid-cols-4 gap-8">
+            <div>
+              <img
+                src="/figmaAssets/background--3--1.png"
+                alt="Entrex"
+                className="h-12 mb-4"
+              />
+              <p className="text-gray-600 text-sm leading-relaxed">
+                Entrex has been serving Pune for several months. Offering our
+                corporate clientele, the most reliable corporate transport
+                service in Pune.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-semibold mb-4 text-gray-900">Company</h3>
+              <div className="space-y-2 text-sm">
+                <div>
+                  <a href="#" className="text-gray-600 hover:text-gray-900">
+                    About
+                  </a>
+                </div>
+                <div>
+                  <a href="#" className="text-gray-600 hover:text-gray-900">
+                    Features
+                  </a>
+                </div>
+                <div>
+                  <a href="#" className="text-gray-600 hover:text-gray-900">
+                    Services
+                  </a>
+                </div>
+                <div>
+                  <a href="#" className="text-gray-600 hover:text-gray-900">
+                    Packages
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="font-semibold mb-4 text-gray-900">Support</h3>
+              <div className="space-y-2 text-sm">
+                <div>
+                  <a href="#" className="text-gray-600 hover:text-gray-900">
+                    Team Solutions
+                  </a>
+                </div>
+                <div>
+                  <a href="#" className="text-gray-600 hover:text-gray-900">
+                    Features
+                  </a>
+                </div>
+                <div>
+                  <a href="#" className="text-gray-600 hover:text-gray-900">
+                    Privacy and Security
+                  </a>
+                </div>
+                <div>
+                  <a href="#" className="text-gray-600 hover:text-gray-900">
+                    Resources
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="font-semibold mb-4 text-gray-900">Contact</h3>
+              <div className="space-y-2 text-sm text-gray-600">
+                <div>
+                  2nd Floor, Thakor Plaza, SG No. 305-306,
+                  <br />
+                  Pune 411014
+                </div>
+                <div>bookings@entrex.in</div>
+                <div>+91 44 4953 0055</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="border-t border-gray-200 mt-12 pt-8 flex justify-between items-center">
+            <p className="text-gray-600 text-sm">
+              Copyright © 2024 Entrex. All Rights Reserved.
+            </p>
+            <div className="flex space-x-4">
+              <a href="#" className="text-gray-600 hover:text-gray-900">
+                Terms of Service
+              </a>
+              <a href="#" className="text-gray-600 hover:text-gray-900">
+                Privacy Policy
+              </a>
+              <a href="#" className="text-gray-600 hover:text-gray-900">
+                Cookies
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
       </div>
     </div>
   );
