@@ -14,6 +14,10 @@ import {
 } from "@/components/ui/select";
 import { Star } from "lucide-react";
 import { Link } from "wouter";
+import img1 from "./Assets/1.png";
+import img2 from "./Assets/2.png";
+import img3 from "./Assets/3.png";
+
 
 const ClientsPage = () => {
   const navigationItems = [
@@ -88,18 +92,21 @@ const ClientsPage = () => {
       role: "Cricket Enthusiast, Mumbai",
       text: "Reliable, courteous, and always on time. ENTREX is more than a transport provider—they're our mobility partner.",
       rating: 5,
+      image: {img1}
     },
     {
       name: "Masha Pillai",
       role: "Finance Coach, Bangalore",
       text: "As an expat, I felt completely at ease with ENTREX. Every ride was smooth, safe, and incredibly professional.",
       rating: 5,
+      image: {img2}
     },
     {
       name: "Aryan Khan",
       role: "School Football Coach, Delhi",
       text: "Best service I've used in a while. My entire team now orders from here—reliable and affordable.",
       rating: 5,
+      image: {img3}
     },
   ];
 
@@ -136,8 +143,7 @@ const ClientsPage = () => {
     },
   ];
 
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
@@ -158,7 +164,7 @@ const ClientsPage = () => {
               />
             </div>
           </Link>
-           {/* Desktop Navigation */}
+          {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-4 xl:gap-8 2xl:gap-[50px]">
             {navigationItems.map((item, index) => (
               <div
@@ -298,62 +304,69 @@ const ClientsPage = () => {
         )}
       </header>
 
-      {/* Hero Section */}
-      <section className="py-16 text-center bg-white">
-        <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
-          Trusted by 1500+ popular companies
-        </h1>
-        <p className="text-gray-600 max-w-3xl mx-auto mb-12 text-lg">
-          Every ENTREX ride comes with thoughtful in-car provisions to ensure
-          your comfort, safety, and satisfaction.
-        </p>
+      {/* Trusted by Companies */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <h1 className="text-3xl font-bold text-center mb-12 text-gray-900">
+            Trusted by 1500+ popular companies
+          </h1>
+          <p className="mx-auto mt-[-40px] w-fit font-medium text-black text-xs xs:text-base text-center tracking-[0] leading-relaxed whitespace-nowrap">
+            Every ENTREX ride comes with thoughtful in-car provisions to ensure
+            your comfort, safety, and satisfaction.
+          </p>
 
-        {/* Company Logos Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 max-w-6xl mx-auto px-6">
-          {companyLogos.map((company, index) => (
-            <div key={index} className="flex items-center justify-center h-16">
-              <div className="text-gray-400 font-semibold text-lg">
-                {company.name}
+          {/* <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8">
+            {companies.map((company, index) => (
+              <div key={index} className="flex items-center justify-center h-16">
+                <div className="text-gray-400 font-semibold text-lg text-center">
+                  {company}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div> */}
+        </div>
+        <div className="w-full flex justify-center">
+          <img
+            className="w-[900px] h-[350px] object-contain"
+            alt="Logos"
+            src="/figmaAssets/logos.png"
+          />
         </div>
       </section>
 
       {/* What We Offer Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-4 text-gray-900">
-            What We Offer
-          </h2>
-          <p className="text-gray-600 text-center mb-12 max-w-3xl mx-auto">
-            Our services are designed to meet your business requirements,
-            offering seamless, safe, and reliable ground transportation.
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <Card
-                key={index}
-                className={`p-6 text-center ${service.color} border-0 shadow-md hover:shadow-lg transition-shadow`}
-              >
-                <CardContent className="p-0">
-                  <div className="text-4xl mb-4">{service.icon}</div>
-                  <h3 className="font-semibold text-lg mb-3 text-gray-900">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-700 text-sm leading-relaxed">
-                    {service.description}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
+      <section id="services" className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+              What We Offer
+            </h2>
+            <p>
+              Our services are designed to simplify business mobility while
+              delivering consistent, comfortable, and compliant ground
+              transportation.
+            </p>
           </div>
 
-          <div className="text-center mt-12">
-            <Button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full">
-              Contact Us
-            </Button>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {services.map((service, index) => (
+              <div
+                key={index}
+                className={` rounded-2xl p-8 transition-all duration-300 `}
+              >
+                <div
+                  className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6`}
+                >
+                  <span className="text-2xl">{service.icon}</span>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                  {service.title}
+                </h3>
+                <p className="text-gray-700 text-sm leading-relaxed">
+                  {service.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -378,7 +391,7 @@ const ClientsPage = () => {
                     "{testimonial.text}"
                   </p>
                   <div className="flex items-center">
-                    <div className="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
+                    <div className="w-12 h-12 bg-gray-300 rounded-full mr-4" ></div>
                     <div>
                       <div className="font-semibold text-gray-900">
                         {testimonial.name}
@@ -396,25 +409,22 @@ const ClientsPage = () => {
       </section>
 
       {/* Certifications Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex justify-between items-center">
-            <div className="text-center bg-gray-50 rounded-lg p-8 w-[280px]">
+            <div className="text-center bg-white rounded-lg p-8 w-[280px]">
               <img
                 src="/figmaAssets/itta-logo1-1.png"
                 alt="ITTA"
-                className="h-20 mx-auto mb-4"
+                className="w-[275px] h-[183px] object-cover"
               />
-              <p className="text-sm font-bold text-gray-800 mb-2">
-                Affiliations: ITTA – Indian
+              &nbsp;
+              <p className="text-sm font-bold text-gray-800 mb-2 lg:text-left">
+                Affiliations: ITTA – Indian Association of Tour Operators
               </p>
-              <p className="text-sm font-bold text-gray-800 mb-4">
-                Association of Tour Operators
-              </p>
-              <p className="text-xs text-gray-600 leading-relaxed">
+              <p className="text-xs text-gray-600 leading-relaxed lg:text-left">
                 We offer GPS-enabled rides so you—and your loved ones—can track
-                your journey with full transparency and safety features you can
-                depend on.
+                your journey with full transparency.
               </p>
             </div>
 
@@ -422,7 +432,7 @@ const ClientsPage = () => {
               <img
                 src="/figmaAssets/golden-olive-foliage-branches-decorative-ornament-frame-1.png"
                 alt="Certification Frame"
-                className="h-48"
+                className="h-100"
               />
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
@@ -436,22 +446,19 @@ const ClientsPage = () => {
               </div>
             </div>
 
-            <div className="text-center bg-gray-50 rounded-lg p-8 w-[280px]">
+            <div className="text-center bg-white rounded-lg p-8 w-[280px]">
               <img
                 src="/figmaAssets/iato-1.png"
                 alt="IATO"
-                className="h-20 mx-auto mb-4"
+                className="w-[275px] h-[183px] object-cover"
               />
-              <p className="text-sm font-bold text-gray-800 mb-2">
-                Affiliations: IATO – Indian
+              &nbsp;
+              <p className="text-sm font-bold text-gray-800 mb-2 lg:text-left">
+                Affiliations: IATO – Indian Association of Tour Operators
               </p>
-              <p className="text-sm font-bold text-gray-800 mb-4">
-                Association of Tour Operators
-              </p>
-              <p className="text-xs text-gray-600 leading-relaxed">
+              <p className="text-xs text-gray-600 leading-relaxed lg:text-left">
                 We offer GPS-enabled rides so you—and your loved ones—can track
-                your journey with full transparency and safety features you can
-                depend on.
+                your journey with full transparency.
               </p>
             </div>
           </div>

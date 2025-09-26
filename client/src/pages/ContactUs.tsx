@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
+import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
+
 
 const ContactUs = () => {
   const navigationItems = [
@@ -105,6 +107,25 @@ const ContactUs = () => {
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form Data Submitted:", formData);
+  };
+
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
@@ -265,8 +286,101 @@ const ContactUs = () => {
         )}
       </header>
 
+ <section className="max-w-6xl mx-auto px-6 py-20">
+      {/* Heading + Icons Row */}
+      <div className="flex items-start justify-between">
+        
+        {/* Left Side Text */}
+        <div className="flex-1 text-left">
+          <p className="text-sm text-gray-600 mb-2">Get Started</p>
+          <h2 className="text-4xl font-bold text-black leading-snug">
+            Get in touch with us. <br />
+            We're here to assist you.
+          </h2>
+        </div>
+
+        {/* Right Side Social Icons */}
+        <div className="flex flex-col gap-4">
+          <a
+            href="#"
+            className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-400 text-gray-600 hover:bg-gray-100"
+          >
+            <FaFacebookF size={14} />
+          </a>
+          <a
+            href="#"
+            className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-400 text-gray-600 hover:bg-gray-100"
+          >
+            <FaInstagram size={14} />
+          </a>
+          <a
+            href="#"
+            className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-400 text-gray-600 hover:bg-gray-100"
+          >
+            <FaTwitter size={14} />
+          </a>
+        </div>
+      </div>
+
+      {/* Contact Form */}
+      <form onSubmit={handleSubmit} className="max-w-4xl mx-auto mt-12 space-y-6">
+        
+        {/* Row 1: Name, Email, Phone */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <input
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            value={formData.name}
+            onChange={handleChange}
+            className="w-full border-b border-gray-300 focus:border-black text-gray-800 placeholder-gray-400 py-2 outline-none transition"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email Address"
+            value={formData.email}
+            onChange={handleChange}
+            className="w-full border-b border-gray-300 focus:border-black text-gray-800 placeholder-gray-400 py-2 outline-none transition"
+            required
+          />
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Phone Number (optional)"
+            value={formData.phone}
+            onChange={handleChange}
+            className="w-full border-b border-gray-300 focus:border-black text-gray-800 placeholder-gray-400 py-2 outline-none transition"
+          />
+        </div>
+
+        {/* Message Field */}
+        <textarea
+          name="message"
+          placeholder="Message"
+          rows="4"
+          value={formData.message}
+          onChange={handleChange}
+          className="w-full border-b border-gray-300 focus:border-black text-gray-800 placeholder-gray-400 py-2 outline-none transition resize-none"
+          required
+        ></textarea>
+
+        {/* Submit Button */}
+        <div className="pt-4">
+          <Button
+            type="submit"
+            className="bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-600 hover:to-orange-500 text-white px-6 py-2 rounded-full text-sm font-medium shadow-md transition"
+          >
+            Leave us a Message →
+          </Button>
+        </div>
+      </form>
+    </section>
+
+
       {/* What We Offer Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl font-bold text-center mb-4 text-gray-900">
             What We Offer

@@ -23,6 +23,16 @@ import {
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import Image from "../pages/Assets/heart.png";
+import { ArrowRightIcon } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import Car from "../pages/Assets/car.jpg";
+import lady from "../pages/Assets/lady.jpg"
 
 const EmployeeTransportationServices = (): JSX.Element => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -67,52 +77,39 @@ const EmployeeTransportationServices = (): JSX.Element => {
   // What We Offer Services - exactly as shown in uploaded design (6 services in 2x3 grid)
   const services = [
     {
-      title: "Real-Time Tracking Solutions",
+      title: "Executive Chauffeur Services",
       description:
-        "Monitor your journeys with live GPS tracking and receive real-time updates on vehicle location and estimated arrival times.",
+        "Discreet, professional chauffeurs for directors, VIPs, and senior leadership.",
       icon: "⚡",
-      color: "bg-blue-50",
-      iconBg: "bg-blue-100",
     },
     {
-      title: "Route Optimization",
+      title: "Airport Transfers",
       description:
-        "Intelligent routing algorithms ensure the most efficient and time-saving travel routes for maximum productivity.",
+        "Punctual pickups and drop-offs with live flight tracking and zero waiting time.",
       icon: "🐾",
-      color: "bg-orange-50",
-      iconBg: "bg-orange-100",
     },
     {
-      title: "Safety Management Solutions",
+      title: "Employee Commute Programs",
       description:
-        "Comprehensive safety protocols and security measures ensuring worry-free employee transportation services.",
+        "Safe, app-tracked transportation for staff with route optimization and rostering.",
       icon: "🔧",
-      color: "bg-orange-50",
-      iconBg: "bg-orange-100",
     },
     {
-      title: "Smart Chauffeur Matching",
+      title: "Expat & Guest Handling",
       description:
-        "Advanced algorithms match employees with the most suitable professional chauffeurs based on preferences.",
+        "Hospitality-trained chauffeurs and multilingual support for global visitors and delegations.",
       icon: "🔒",
-      color: "bg-purple-50",
-      iconBg: "bg-purple-100",
     },
     {
-      title: "Advanced Fleet Management",
+      title: "Centralized Billing & MIS Reports",
       description:
-        "Modern vehicle fleet with regular maintenance and quality assurance for reliable and comfortable service.",
-      icon: "✈️",
-      color: "bg-blue-50",
-      iconBg: "bg-blue-100",
-    },
+        "Transparent invoicing with detailed ride history, analytics, and corporate summaries.",
+      icon: "✈️",   },
     {
-      title: "Cost-Effective Solution Platform",
+      title: "App-Based Booking & Trip Management",
       description:
-        "Optimized pricing models and efficient resource allocation to provide maximum value for corporate transportation.",
+        "Real-time tracking, instant bookings, and secure ride monitoring via our digital platform.",
       icon: "💰",
-      color: "bg-orange-50",
-      iconBg: "bg-orange-100",
     },
   ];
 
@@ -193,37 +190,37 @@ const EmployeeTransportationServices = (): JSX.Element => {
     {
       title: "Real-Time GPS Tracking",
       description:
-        "Know exactly where your employees are during their commute with live tracking technology.",
+        "Monitor routes, driver behavior, and vehicle status through our centralized tracking system.",
       icon: "🎯",
     },
     {
-      title: "Roster Management",
+      title: "Dynamic Shift Management",
       description:
-        "Efficiently manage employee schedules and transportation rosters with our advanced system.",
+        "Auto-generated rosters based on employee shift timings, integrated with your HRMS or scheduling platform.",
       icon: "🔒",
     },
     {
-      title: "Smart Route Optimization",
+      title: "Verified Chauffeurs",
       description:
-        "AI-powered route planning ensures the most efficient paths and reduced travel time.",
+        "All drivers undergo background checks, safety training, and etiquette certification.",
       icon: "🛣️",
     },
     {
-      title: "Professional Chauffeurs",
+      title: "PAN India Coverage",
       description:
-        "Experienced, vetted drivers with excellent safety records and customer service skills.",
+        "Operations across Tier 1, Tier 2, and emerging metro regions — no location is out of reach.",
       icon: "👨‍🦱",
     },
     {
-      title: "Easy Booking and Tracking",
+      title: "24×7 Control Room",
       description:
-        "Simple booking process with comprehensive tracking capabilities through our mobile app.",
+        "Round-the-clock support for routing, rescheduling, or emergency handling.",
       icon: "📅",
     },
     {
-      title: "Backup Vehicle and Driver Availability",
+      title: "Data-Driven Reporting",
       description:
-        "Redundancy built into our system ensures uninterrupted service even during peak demands.",
+        "MIS reports, trip logs, billing summaries, and audit trails — all available via dashboard or export.",
       icon: "🚗",
     },
   ];
@@ -267,62 +264,120 @@ const EmployeeTransportationServices = (): JSX.Element => {
   // ];
 
   // FAQs
-  const faqs = [
+  const leftColumnFaqs = [
     {
-      question:
-        "What types of vehicles do you provide for employee transportation?",
+      id: "item-1",
+      question: "What is Webflow and why is it the best website builder?",
       answer:
-        "We offer a comprehensive fleet including sedans, SUVs, and mini-buses to accommodate different group sizes and comfort requirements for corporate transportation.",
+        "Vitae congue eu consequat ac felis placerat vestibulum lectus mauris ultrices. Cursus sit amet dictum sit amet justo donec enim diam porttitor lacus luctus accumsan tortor posuere.",
+      isExpanded: true,
     },
     {
-      question: "How do you ensure driver safety and reliability?",
-      answer:
-        "All our chauffeurs undergo thorough background verification, regular training programs, and are equipped with GPS tracking for real-time monitoring and safety compliance.",
+      id: "item-2",
+      question: "What is your favorite template from BRIX Templates?",
+      answer: "",
+      isExpanded: false,
     },
     {
-      question: "Can you customize routes for our employees?",
-      answer:
-        "Yes, we work closely with you to design optimal routes based on your employee locations, office timings, and specific requirements for maximum efficiency.",
+      id: "item-3",
+      question: "How do you clone a template from the Showcase?",
+      answer: "",
+      isExpanded: false,
     },
     {
-      question: "What are your pricing models?",
-      answer:
-        "We offer flexible pricing including monthly packages, per-trip rates, and custom corporate contracts based on your specific needs and usage patterns.",
+      id: "item-4",
+      question: "Why is BRIX Templates the best Webflow agency?",
+      answer: "",
+      isExpanded: false,
     },
     {
-      question: "Do you provide services during weekends and holidays?",
-      answer:
-        "Yes, we provide comprehensive 24/7 services including weekends and holidays based on your business requirements and schedules.",
+      id: "item-5",
+      question: "When was Webflow officially launched?",
+      answer: "",
+      isExpanded: false,
     },
     {
-      question: "How can we track our employees during their commute?",
+      id: "item-6",
+      question: "How do you integrate Jetboost with Webflow?",
+      answer: "",
+      isExpanded: false,
+    },
+  ];
+
+  const rightColumnFaqs = [
+    {
+      id: "item-7",
+      question: "What is your favorite template from BRIX Templates?",
+      answer: "",
+      isExpanded: false,
+    },
+    {
+      id: "item-8",
+      question: "How do you clone a template from the Showcase?",
+      answer: "",
+      isExpanded: false,
+    },
+    {
+      id: "item-9",
+      question: "What is Webflow and why is it the best website builder?",
       answer:
-        "Our advanced GPS tracking system provides real-time location updates, trip notifications, and comprehensive reporting for enhanced safety and monitoring.",
+        "Vitae congue eu consequat ac felis placerat vestibulum lectus mauris ultrices. Cursus sit amet dictum sit amet justo donec enim diam porttitor lacus luctus accumsan tortor posuere.",
+      isExpanded: true,
+    },
+    {
+      id: "item-10",
+      question: "Why is BRIX Templates the best Webflow agency?",
+      answer: "",
+      isExpanded: false,
+    },
+    {
+      id: "item-11",
+      question: "When was Webflow officially launched?",
+      answer: "",
+      isExpanded: false,
+    },
+    {
+      id: "item-12",
+      question: "How do you integrate Jetboost with Webflow?",
+      answer: "",
+      isExpanded: false,
     },
   ];
 
   // News & Updates
   const newsUpdates = [
     {
-      title: "ENTREX Launches Advanced Fleet Management System",
-      excerpt:
-        "New AI-powered technology platform enhances real-time tracking capabilities and significantly improves customer experience across all corporate transportation services.",
-      date: "March 15, 2024",
-      image: "/figmaAssets/news-1.png",
+      id: 1,
+      title: "Surviving through tough times as a first time SaaS…",
+      description:
+        "Self-service data analytics software that lets you create visually appealing data visualizations and insightful dashboards in minutes.",
+      category: "BUSINESS",
+      categoryColor: "bg-[#ffe9d9]",
+      date: "Oct 3",
+      readTime: "7 min read",
+      image: "/figmaAssets/mask-group-1.png",
     },
     {
-      title: "Strategic Partnership with Leading Tech Companies",
-      excerpt:
-        "ENTREX announces major partnerships with Fortune 500 technology firms to provide comprehensive employee transportation solutions and corporate mobility services.",
-      date: "March 10, 2024",
-      image: "/figmaAssets/news-2.png",
+      id: 2,
+      title: "SaaS customer development and no-code prototypes",
+      description:
+        "Self-service data analytics software that lets you create visually appealing data visualizations and insightful dashboards in minutes.",
+      category: "MARKETING",
+      categoryColor: "bg-[#d8f4fc]",
+      date: "Oct 3",
+      readTime: "7 min read",
+      image: "/figmaAssets/image.png",
     },
     {
-      title: "Service Expansion to 15 New Cities Across India",
-      excerpt:
-        "ENTREX expands operations significantly to serve more corporate clients with premium transportation services and comprehensive mobility solutions nationwide.",
-      date: "March 5, 2024",
-      image: "/figmaAssets/news-3.png",
+      id: 3,
+      title: "Highnote Emerges from Stealth with $54 Million in …",
+      description:
+        "Self-service data analytics software that lets you create visually appealing data visualizations and insightful dashboards in minutes.",
+      category: "ANALYTICS",
+      categoryColor: "bg-[#e0f8de]",
+      date: "Oct 3",
+      readTime: "7 min read",
+      image: "/figmaAssets/mask-group.png",
     },
   ];
 
@@ -566,38 +621,38 @@ const EmployeeTransportationServices = (): JSX.Element => {
                   <input
                     type="text"
                     placeholder="Full Name"
-                    className="w-full px-4 py-3 border-2 border-gray-800 bg-transparent rounded-lg text-white placeholder-gray-300 focus:border-white outline-none transition-all"
+                    className="w-full px-4 py-3 border-2 border-gray-800 bg-transparent rounded-lg text-black placeholder-gray-300 focus:border-white outline-none transition-all"
                   />
                   <input
                     type="text"
                     placeholder="Company Name"
-                    className="w-full px-4 py-3 border-2 border-gray-800 bg-transparent rounded-lg text-white placeholder-gray-300 focus:border-white outline-none transition-all"
+                    className="w-full px-4 py-3 border-2 border-gray-800 bg-transparent rounded-lg text-black placeholder-gray-300 focus:border-white outline-none transition-all"
                   />
                 </div>
 
                 <input
                   type="email"
                   placeholder="Email Address"
-                  className="w-full px-4 py-3 border-2 border-gray-800 bg-transparent rounded-lg text-white placeholder-gray-300 focus:border-white outline-none transition-all"
+                  className="w-full px-4 py-3 border-2 border-gray-800 bg-transparent rounded-lg text-black placeholder-gray-300 focus:border-white outline-none transition-all"
                 />
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <input
                     type="tel"
                     placeholder="Phone Number"
-                    className="w-full px-4 py-3 border-2 border-gray-800 bg-transparent rounded-lg text-white placeholder-gray-300 focus:border-white outline-none transition-all"
+                    className="w-full px-4 py-3 border-2 border-gray-800 bg-transparent rounded-lg text-black placeholder-gray-300 focus:border-white outline-none transition-all"
                   />
                   <input
                     type="text"
                     placeholder="Number of Employees"
-                    className="w-full px-4 py-3 border-2 border-gray-800 bg-transparent rounded-lg text-white placeholder-gray-300 focus:border-white outline-none transition-all"
+                    className="w-full px-4 py-3 border-2 border-gray-800 bg-transparent rounded-lg text-black placeholder-gray-300 focus:border-white outline-none transition-all"
                   />
                 </div>
 
                 <input
                   type="text"
                   placeholder="Service Required"
-                  className="w-full px-4 py-3 border-2 border-gray-800 bg-transparent rounded-lg text-white placeholder-gray-300 focus:border-white outline-none transition-all"
+                  className="w-full px-4 py-3 border-2 border-gray-800 bg-transparent rounded-lg text-black placeholder-gray-300 focus:border-white outline-none transition-all"
                 />
 
                 <textarea
@@ -625,16 +680,19 @@ const EmployeeTransportationServices = (): JSX.Element => {
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
               What We Offer
             </h2>
+            <p>
+              Our services are designed to simplify business mobility while delivering consistent, comfortable, and compliant ground transportation.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {services.map((service, index) => (
               <div
                 key={index}
-                className={`${service.color} rounded-2xl p-8 hover:shadow-lg transition-all duration-300 border border-gray-200`}
+                className={` rounded-2xl p-8 transition-all duration-300 `}
               >
                 <div
-                  className={`w-16 h-16 ${service.iconBg} rounded-2xl flex items-center justify-center mb-6`}
+                  className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6`}
                 >
                   <span className="text-2xl">{service.icon}</span>
                 </div>
@@ -685,7 +743,7 @@ const EmployeeTransportationServices = (): JSX.Element => {
             <div className="relative">
               <div className="bg-gradient-to-br from-blue-50 to-orange-50 rounded-2xl p-8">
                 <img
-                  src="/figmaAssets/car-interior.png"
+                  src={lady}
                   alt="Professional Car Interior"
                   className="w-full h-auto rounded-lg shadow-lg"
                   onError={(e) => {
@@ -700,16 +758,23 @@ const EmployeeTransportationServices = (): JSX.Element => {
       </section>
 
       {/* Why Your Website is Your Best Salesperson Section */}
-      <section id="website-benefits" className="py-20 bg-gray-50">
+      <section id="website-benefits" className="py-20">
+        <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            Why Your Website Is Your Best Salesperson
+          </h2>
+          <p>Choose from a wide range of well-maintained vehicles tailored for employee transportation across all business sizes and shift types.</p>
+        </div>
+
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Column - Image */}
             <div className="order-2 lg:order-1">
               <div className="relative">
                 <img
-                  src="/figmaAssets/professional-car.png"
+                  src={Car}
                   alt="Professional Car Service"
-                  className="w-full h-auto rounded-2xl shadow-lg"
+                  className="w-full h-auto rounded-2xl"
                   onError={(e) => {
                     e.currentTarget.src =
                       "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDUwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI1MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjRjNGNEY2Ii8+CjxyZWN0IHg9IjUwIiB5PSIxMDAiIHdpZHRoPSI0MDAiIGhlaWdodD0iMTAwIiByeD0iMTAiIGZpbGw9IiNFNUU3RUIiLz4KPGNpcmNsZSBjeD0iMTUwIiBjeT0iMjIwIiByPSIzMCIgZmlsbD0iIzlCOUNBMCIvPgo8Y2lyY2xlIGN4PSIzNTAiIGN5PSIyMjAiIHI9IjMwIiBmaWxsPSIjOUI5Q0EwIi8+Cjx0ZXh0IHg9IjI1MCIgeT0iMjcwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOUI5Q0EwIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCI+UHJvZmVzc2lvbmFsIENhcjwvdGV4dD4KPC9zdmc+";
@@ -720,10 +785,6 @@ const EmployeeTransportationServices = (): JSX.Element => {
 
             {/* Right Column - Content */}
             <div className="order-1 lg:order-2">
-              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-8">
-                Why Your Website Is Your Best Salesperson
-              </h2>
-
               <div className="space-y-6">
                 {websiteBenefits.map((benefit, index) => (
                   <div key={index} className="flex items-start space-x-4">
@@ -811,9 +872,9 @@ const EmployeeTransportationServices = (): JSX.Element => {
       {/* Trusted by Companies */}
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">
+          <h1 className="text-3xl font-bold text-center mb-12 text-gray-900">
             Trusted by 1500+ popular companies
-          </h2>
+          </h1>
           <p className="mx-auto mt-[-40px] w-fit font-medium text-black text-xs xs:text-base text-center tracking-[0] leading-relaxed whitespace-nowrap">
             Every ENTREX ride comes with thoughtful in-car provisions to ensure
             your comfort, safety, and satisfaction.
@@ -831,7 +892,7 @@ const EmployeeTransportationServices = (): JSX.Element => {
         </div>
         <div className="w-full flex justify-center">
           <img
-            className="w-[800px] h-[250px] object-contain"
+            className="w-[900px] h-[350px] object-contain"
             alt="Logos"
             src="/figmaAssets/logos.png"
           />
@@ -839,24 +900,22 @@ const EmployeeTransportationServices = (): JSX.Element => {
       </section>
 
       {/* Certifications Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex justify-between items-center">
-            <div className="text-center bg-white rounded-lg p-8 w-[280px] shadow-md">
+            <div className="text-center bg-white rounded-lg p-8 w-[280px]">
               <img
                 src="/figmaAssets/itta-logo1-1.png"
                 alt="ITTA"
-                className="h-20 mx-auto mb-4"
+                className="w-[275px] h-[183px] object-cover"
               />
-              <p className="text-sm font-bold text-gray-800 mb-2">
-                Affiliations: ITTA – Indian
+              &nbsp;
+              <p className="text-sm font-bold text-gray-800 mb-2 lg:text-left">
+                Affiliations: ITTA – Indian Association of Tour Operators
               </p>
-              <p className="text-sm font-bold text-gray-800 mb-4">
-                Association of Tour Operators
-              </p>
-              <p className="text-xs text-gray-600 leading-relaxed">
-                Certified member ensuring quality standards and professional
-                service delivery.
+              <p className="text-xs text-gray-600 leading-relaxed lg:text-left">
+                We offer GPS-enabled rides so you—and your loved ones—can track
+                your journey with full transparency.
               </p>
             </div>
 
@@ -864,7 +923,7 @@ const EmployeeTransportationServices = (): JSX.Element => {
               <img
                 src="/figmaAssets/golden-olive-foliage-branches-decorative-ornament-frame-1.png"
                 alt="Certification Frame"
-                className="h-80"
+                className="h-100"
               />
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
@@ -878,21 +937,19 @@ const EmployeeTransportationServices = (): JSX.Element => {
               </div>
             </div>
 
-            <div className="text-center bg-white rounded-lg p-8 w-[280px] shadow-md">
+            <div className="text-center bg-white rounded-lg p-8 w-[280px]">
               <img
                 src="/figmaAssets/iato-1.png"
                 alt="IATO"
-                className="h-20 mx-auto mb-4"
+                className="w-[275px] h-[183px] object-cover"
               />
-              <p className="text-sm font-bold text-gray-800 mb-2">
-                Affiliations: IATO – Indian
+              &nbsp;
+              <p className="text-sm font-bold text-gray-800 mb-2 lg:text-left">
+                Affiliations: IATO – Indian Association of Tour Operators
               </p>
-              <p className="text-sm font-bold text-gray-800 mb-4">
-                Association of Tour Operators
-              </p>
-              <p className="text-xs text-gray-600 leading-relaxed">
-                Licensed operator providing reliable and secure transportation
-                services.
+              <p className="text-xs text-gray-600 leading-relaxed lg:text-left">
+                We offer GPS-enabled rides so you—and your loved ones—can track
+                your journey with full transparency.
               </p>
             </div>
           </div>
@@ -901,63 +958,130 @@ const EmployeeTransportationServices = (): JSX.Element => {
 
       {/* Frequently Asked Questions Section */}
       <section id="faqs" className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+        <div className="flex flex-col items-center max-w-[1200px] mx-auto px-4">
+          <div className="flex flex-col items-center text-center mb-12">
+            <div className="w-fit bg-[linear-gradient(103deg,rgba(255,156,18,1)_0%,rgba(255,0,0,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] font-bold text-lg tracking-[1.86px] leading-[28.0px] mb-4">
+              FAQ
+            </div>
+
+            <h2 className="font-bold text-[#111827] text-3xl lg:text-5xl xl:text-[62.7px] text-center tracking-[-1.60px] leading-tight mb-6">
               Frequently Asked Questions (FAQs)
             </h2>
+
+            <p className="font-normal text-[#111827] text-base lg:text-lg text-center tracking-[0] leading-relaxed max-w-[800px]">
+              Got questions? We've got answers! Find solutions to common queries
+              about our services, processes, and technology.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {faqs.map((faq, index) => (
-              <div key={index} className="bg-gray-50 rounded-2xl p-8">
-                <h3 className="text-lg font-bold text-gray-900 mb-4">
-                  {faq.question}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
-              </div>
-            ))}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 max-w-[1200px] mx-auto">
+            <div className="w-full">
+              <Accordion type="single" collapsible defaultValue="item-1">
+                {leftColumnFaqs.map((faq) => (
+                  <AccordionItem
+                    key={faq.id}
+                    value={faq.id}
+                    className="border-b border-gray-300"
+                  >
+                    <AccordionTrigger className="text-left font-bold text-[#0093ff] data-[state=closed]:text-[#303a42] text-lg lg:text-xl tracking-[0] leading-tight hover:no-underline py-4">
+                      {faq.question}
+                    </AccordionTrigger>
+                    {faq.answer && (
+                      <AccordionContent className="font-normal text-[#303a42] text-sm lg:text-base tracking-[0] leading-relaxed pb-6">
+                        {faq.answer}
+                      </AccordionContent>
+                    )}
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
+
+            <div className="w-full">
+              <Accordion type="single" collapsible defaultValue="item-9">
+                {rightColumnFaqs.map((faq) => (
+                  <AccordionItem
+                    key={faq.id}
+                    value={faq.id}
+                    className="border-b border-gray-300"
+                  >
+                    <AccordionTrigger className="text-left font-bold text-[#0093ff] data-[state=closed]:text-[#303a42] text-lg lg:text-xl tracking-[0] leading-tight hover:no-underline py-4">
+                      {faq.question}
+                    </AccordionTrigger>
+                    {faq.answer && (
+                      <AccordionContent className="font-normal text-[#303a42] text-sm lg:text-base tracking-[0] leading-relaxed pb-6">
+                        {faq.answer}
+                      </AccordionContent>
+                    )}
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
           </div>
         </div>
       </section>
 
       {/* News & Updates Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+      <section className="py-12 md:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="text-center mb-10 md:mb-14">
+            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900">
               News & Updates
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {newsUpdates.map((news, index) => (
+          {/* Articles Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {newsUpdates.map((news) => (
               <div
-                key={index}
-                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+                key={news.id}
+                className="rounded-xl border border-gray-200 overflow-hidden shadow-sm flex flex-col"
               >
-                <div className="h-48 bg-gradient-to-br from-blue-50 to-orange-50 flex items-center justify-center">
+                {/* Image */}
+                <div className="h-40 md:h-48 bg-gradient-to-br from-blue-50 to-orange-50">
                   <img
                     src={news.image}
-                    alt={news.title}
+                    alt="Article image"
                     className="w-full h-full object-cover"
-                    onError={(e) => {
-                      e.currentTarget.src =
-                        "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDMwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjRjNGNEY2Ii8+CjxjaXJjbGUgY3g9IjE1MCIgY3k9IjEwMCIgcj0iNDAiIGZpbGw9IiNFNUU3RUIiLz4KPHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJMMTMuMDkgOC4yNkwyMSA5TDEzLjA5IDE1Ljc0TDEyIDIyTDEwLjkxIDE1Ljc0TDMgOUwxMC45MSA4LjI2TDEyIDJaIiBmaWxsPSIjOUI5Q0EwIi8+Cjwvc3ZnPgo8L3N2Zz4=";
-                    }}
                   />
                 </div>
-                <div className="p-6">
-                  <p className="text-sm text-gray-500 mb-2">{news.date}</p>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">
-                    {news.title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {news.excerpt}
-                  </p>
+
+                {/* Content */}
+                <div className="p-5 flex flex-col justify-between flex-grow">
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                      {news.title}
+                    </h3>
+                    <p className="text-sm text-gray-600 mb-4">
+                      {news.description}
+                    </p>
+                  </div>
+
+                  {/* Footer */}
+                  <div className="flex items-center justify-between">
+                    <Badge
+                      className={`${news.categoryColor} text-gray-0 font-bold text-base tracking-[1.14px] [font-family:'Inter',Helvetica] rounded-[21.33px] px-4 py-2 h-8`}
+                    >
+                      {news.category}
+                    </Badge>
+                    <span>
+                      {news.date} · {news.readTime}
+                    </span>
+                  </div>
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* View More Button */}
+          <div className="flex justify-center mt-10">
+            <Button
+              variant="ghost"
+              className="text-blue-600 text-base md:text-lg font-medium hover:bg-transparent flex items-center gap-2"
+            >
+              View more articles
+              <ArrowRightIcon className="w-5 h-5" />
+            </Button>
           </div>
         </div>
       </section>
