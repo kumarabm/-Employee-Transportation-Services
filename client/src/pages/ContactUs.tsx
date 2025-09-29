@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
+import { useToast } from "@/hooks/use-toast";
 
 
 const ContactUs = () => {
