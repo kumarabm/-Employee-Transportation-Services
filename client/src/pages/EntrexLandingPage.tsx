@@ -71,23 +71,9 @@ const EntrexLandingPage = (): JSX.Element => {
   return (
     <div className="bg-[#f2f2f2] w-full min-h-screen">
       {/* Top Contact Bar */}
-      <div className="w-full h-auto py-2 lg:h-[42px] bg-white">
-        <div className="flex flex-col lg:flex-row w-full max-w-screen-3xl items-center justify-between mx-auto lg:pt-3 px-4 lg:px-16 xl:px-24 2xl:px-32 3xl:px-[120px] gap-2 lg:gap-0">
-          <div className="font-medium text-black text-sm lg:text-base tracking-[0] leading-[normal]">
-            bookings@entrex.in
-          </div>
-          <div className="font-medium text-black text-sm lg:text-base tracking-[0] leading-[normal] text-center lg:text-right">
-            <span className="hidden lg:inline">
-              +91 44 4953 0055&nbsp;&nbsp;|&nbsp;&nbsp;+91 98400
-              27990&nbsp;&nbsp;|&nbsp;&nbsp;+91 91767 81444
-            </span>
-            <span className="lg:hidden">
-              +91 44 4953 0055
-              <br />
-              +91 98400 27990
-            </span>
-          </div>
-        </div>
+     <div className="w-full py-2 flex justify-between text-sm">
+        <span>bookings@entrex.in</span>
+        <span>+91 44 4953 0055 | +91 98400 27990 | +91 91767 81444</span>
       </div>
 
       {/* Hero Header with Navigation */}

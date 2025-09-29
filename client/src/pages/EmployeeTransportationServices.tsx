@@ -417,12 +417,13 @@ const EmployeeTransportationServices = (): JSX.Element => {
   return (
     <div className="bg-white w-full min-h-screen">
       {/* Top Contact Bar */}
-      <div className="w-full bg-gray-100 py-2 text-center text-sm text-gray-600">
+      <div className="w-full py-2 flex justify-between text-sm">
+        <span>bookings@entrex.in</span>
         <span>+91 44 4953 0055 | +91 98400 27990 | +91 91767 81444</span>
       </div>
 
       {/* Header Navigation */}
-      <header className="w-full bg-white shadow-sm py-4">
+      <header className="w-full bg-white py-4">
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           <Link href="/">
             <div className="flex items-center">
