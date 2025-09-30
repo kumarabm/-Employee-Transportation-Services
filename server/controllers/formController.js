@@ -1,4 +1,5 @@
 import FormSubmission from '../models/FormSubmission.js';
+import Booking from '../models/Booking.js';
 
 // Submit a new form
 const submitForm = async (req, res) => {
@@ -190,10 +191,52 @@ const healthCheck = async (req, res) => {
   }
 };
 
+const booking = async (req, res) => {
+  try {
+    const {
+      fullName,
+      phone,
+      email,
+      date,
+      time,
+      adults,
+      children,
+      message
+    } = req.body;
+  console.log(req.body);
+  
+
+    if (!fullName || !phone || !email || !date || !time) {
+      return res.status(400).json({ message: 'Required fields are missing' });
+    }
+
+    const newBooking = new Booking({
+      fullName,
+      phone,
+      email,
+      date,
+      time,
+      adults,
+      children,
+      message
+    });
+    console.log(newBooking,"data");
+    
+
+    await newBooking.save();
+
+    res.status(201).json({ message: 'Booking successful', booking: newBooking });
+  } catch (err) {
+    console.error('Booking error:', err);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
 export {
   submitForm,
   getAllSubmissions,
   getSubmissionById,
   getSubmissionStats,
-  healthCheck
+  healthCheck,
+  booking
 };

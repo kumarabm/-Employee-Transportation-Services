@@ -3,12 +3,14 @@ import { registerRoutes } from "./routes.js";
 import { setupVite, serveStatic, log } from "./vite.js";
 import connectDB from "./config/db.js";
 import dotenv from 'dotenv';
+import bodyParser from 'body-parser';
 
 // Load environment variables
 dotenv.config();
 
 const app = express();
 app.use(express.json());
+app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use((req, res, next) => {

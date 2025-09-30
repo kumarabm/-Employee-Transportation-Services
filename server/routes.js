@@ -5,7 +5,8 @@ import {
   getAllSubmissions,
   getSubmissionById,
   getSubmissionStats,
-  healthCheck
+  healthCheck,
+  booking
 } from './controllers/formController.js';
 
 export async function registerRoutes(app) {
@@ -23,7 +24,7 @@ export async function registerRoutes(app) {
   
   // Form submission endpoints
   app.post('/api/forms', submitForm);
-  
+  app.post('/api/bookingForms', booking)
   
   app.get('/api/forms', getAllSubmissions);
   app.get('/api/forms/stats', getSubmissionStats);

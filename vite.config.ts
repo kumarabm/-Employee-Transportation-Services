@@ -28,10 +28,19 @@ export default defineConfig({
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
   },
+
+  // ✅ Add this proxy section
   server: {
     fs: {
       strict: true,
       deny: ["**/.*"],
     },
+    proxy: {
+      '/api': {
+        target: 'http://localhost:5000',  // Your backend server
+        changeOrigin: true,
+        secure: false,
+      }
+    }
   },
 });
