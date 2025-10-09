@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React, { useState , FormEvent} from "react";
 import { Link } from "wouter";
 import { CallToActionSection } from "./sections/CallToActionSection";
 import { CertificationsSection } from "./sections/CertificationsSection";
 import { ContactUsSection } from "./sections/ContactUsSection";
 import { FAQsSection } from "./sections/FAQsSection";
-import { HeroSection } from "./sections/HeroSection";
-import { InCarProvisionsSection } from "./sections/InCarProvisionsSection";
-import { NewsUpdatesSection } from "./sections/NewsUpdatesSection";
+// import { HeroSection } from "./sections/HeroSection";
+// import { InCarProvisionsSection } from "./sections/InCarProvisionsSection";
+// import { NewsUpdatesSection } from "./sections/NewsUpdatesSection";
 import { OurServicesSection } from "./sections/OurServicesSection";
-import { TrustedBySection } from "./sections/TrustedBySection";
+// import { TrustedBySection } from "./sections/TrustedBySection";
 import { WhyChooseUsSection } from "./sections/WhyChooseUsSection";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -20,58 +20,146 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
+import axios from "axios";
 
-const navigationItems = [
-  { label: "About Us", href: "/about-us" },
-  { label: "Services", href: "#services", hasMenu: true },
-  { label: "Tour Packages", href: "/employee-transportation-services" },
-  { label: "Luxury Car Rentals", href: "/" },
-  { label: "Clients", href: "/clients" },
-  { label: "Contact Us", href: "/contact-us" },
-];
-
-const servicesMenuItems = [
-  {
-    title: "Corporate Mobility Solutions",
-    items: [
-      "Employee Transportation",
-      "Employee Trips",
-      "Executive Leasing",
-      "Roster Planning & Routing",
-      "Management Reporting",
-      "Systemized Billing",
-      "Transport Desk & Ticketing",
-    ],
-  },
-  {
-    title: "Event & Custom Travel",
-    items: [
-      "Events & Seminars",
-      "Elite Weddings",
-      "Family Events & Holidays",
-      "Customized Tours",
-    ],
-  },
-  {
-    title: "Tour & Rental Services",
-    items: [
-      "Pilgrim Tours",
-      "Package Tours",
-      "Premium Rent-a-Cab",
-      "Ticketing",
-    ],
-  },
-];
-
-const placeholderBoxes = Array(10).fill(null);
+interface BookingFormData {
+  fullName: string;
+  phone: string;
+  email: string;
+  date: string;
+  time: string;
+  adults: string | number;
+  children: string | number;
+  message: string;
+}
 
 const EntrexLandingPage = (): JSX.Element => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+ const [formData, setFormData] = useState<BookingFormData>({
+    fullName: "",
+    phone: "",
+    email: "",
+    date: "",
+    time: "",
+    adults: "",
+    children: "",
+    message: "",
+  });
+
+  const navigationItems = [
+    { label: "About Us", href: "/about-us" },
+    { label: "Services", href: "#services", hasMenu: true },
+    { label: "Tour Packages", href: "/employee-transportation-services" },
+    { label: "Luxury Car Rentals", href: "/" },
+    { label: "Clients", href: "/clients" },
+    { label: "Contact Us", href: "/contact-us" },
+  ];
+
+  const servicesMenuItems = [
+    {
+      title: "Corporate Mobility Solutions",
+      items: [
+        "Employee Transportation",
+        "Employee Trips",
+        "Executive Leasing",
+        "Roster Planning & Routing",
+        "Management Reporting",
+        "Systemized Billing",
+        "Transport Desk & Ticketing",
+      ],
+    },
+    {
+      title: "Event & Custom Travel",
+      items: [
+        "Events & Seminars",
+        "Elite Weddings",
+        "Family Events & Holidays",
+        "Customized Tours",
+      ],
+    },
+    {
+      title: "Tour & Rental Services",
+      items: [
+        "Pilgrim Tours",
+        "Package Tours",
+        "Premium Rent-a-Cab",
+        "Ticketing",
+      ],
+    },
+  ];
+
+  const placeholderBoxes = Array(10).fill(null);
+
+  const handleChange = (e) => {
+    const { value, dataset } = e.target;
+
+    // Match by data-testid for simplicity
+    switch (dataset.testid) {
+      case "input-full-name":
+        setFormData((prev) => ({ ...prev, fullName: value }));
+        break;
+      case "input-phone":
+        setFormData((prev) => ({ ...prev, phone: value }));
+        break;
+      case "input-email":
+        setFormData((prev) => ({ ...prev, email: value }));
+        break;
+      case "select-date":
+        setFormData((prev) => ({ ...prev, date: value }));
+        break;
+      case "select-time":
+        setFormData((prev) => ({ ...prev, time: value }));
+        break;
+      case "select-adults":
+        setFormData((prev) => ({ ...prev, adults: value }));
+        break;
+      case "select-children":
+        setFormData((prev) => ({ ...prev, children: value }));
+        break;
+      case "textarea-message":
+        setFormData((prev) => ({ ...prev, message: value }));
+        break;
+    }
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    try {
+
+ const payload = {
+  ...formData,
+  adults: parseInt(formData.adults) || 0,
+  children: parseInt(formData.children) || 0,
+};
+
+console.log("Submitting form with data:", payload);
+
+const response = await axios.post("/api/bookingForms", payload);
+
+console.log(response.data, "resapi");
+alert("Booking successful!");
+
+
+      setFormData({
+        fullName: "",
+        phone: "",
+        email: "",
+        date: "",
+        time: "",
+        adults: "",
+        children: "",
+        message: "",
+      });
+    } catch (err: any) {
+      console.error(err.response?.data || err.message);
+      alert("Error: " + (err.response?.data?.message || "Server error"));
+    }
+  };
 
   return (
     <div className="bg-[#f2f2f2] w-full min-h-screen">
       {/* Top Contact Bar */}
-     <div className="w-full py-2 flex justify-between text-sm">
+      <div className="w-full py-2 flex justify-between text-sm">
         <span>bookings@entrex.in</span>
         <span>+91 44 4953 0055 | +91 98400 27990 | +91 91767 81444</span>
       </div>
@@ -297,18 +385,26 @@ const EntrexLandingPage = (): JSX.Element => {
                   Book Your Ride Instantly
                 </h2>
 
-                <form className="space-y-4" data-testid="booking-form">
+                <form className="space-y-4" data-testid="booking-form"  onSubmit={handleSubmit}>
                   {/* Name and Phone Row */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <input
                       type="text"
                       placeholder="Full Name"
+                      value={formData.fullName}
+                      onChange={(e) =>
+                        setFormData({ ...formData, fullName: e.target.value })
+                      }
                       className="w-full px-4 py-3 border-2 border-gray-800 bg-transparent rounded-lg text-black placeholder-gray-300 focus:border-white outline-none transition-all"
                       data-testid="input-full-name"
                     />
                     <input
                       type="tel"
                       placeholder="Phone Number"
+                      value={formData.phone}
+                      onChange={(e) =>
+                        setFormData({ ...formData, phone: e.target.value })
+                      }
                       className="w-full px-4 py-3 border-2 border-gray-800 bg-transparent rounded-lg text-black placeholder-gray-300 focus:border-white outline-none transition-all"
                       data-testid="input-phone"
                     />
@@ -318,6 +414,10 @@ const EntrexLandingPage = (): JSX.Element => {
                   <input
                     type="email"
                     placeholder="Email Address"
+                    value={formData.email}
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
                     className="w-full px-4 py-3 border-2 border-gray-800 bg-transparent rounded-lg text-black placeholder-gray-300 focus:border-white outline-none transition-all"
                     data-testid="input-email"
                   />
@@ -325,14 +425,32 @@ const EntrexLandingPage = (): JSX.Element => {
                   {/* Date and Time Row */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <select
+                      value={formData.date}
+                      onChange={(e) =>
+                        setFormData({ ...formData, date: e.target.value })
+                      }
                       className="w-full px-4 py-3 border-2 border-gray-800 bg-transparent rounded-lg text-black placeholder-gray-300 focus:border-white outline-none transition-all"
                       data-testid="select-date"
                     >
                       <option>Select Date</option>
-                      <option>Today</option>
-                      <option>Tomorrow</option>
+                      <option value={new Date().toISOString().split("T")[0]}>
+                        Today
+                      </option>
+                      <option
+                        value={
+                          new Date(Date.now() + 86400000)
+                            .toISOString()
+                            .split("T")[0]
+                        }
+                      >
+                        Tomorrow
+                      </option>
                     </select>
                     <select
+                      value={formData.time}
+                      onChange={(e) =>
+                        setFormData({ ...formData, time: e.target.value })
+                      }
                       className="w-full px-4 py-3 border-2 border-gray-800 bg-transparent rounded-lg text-black placeholder-gray-300 focus:border-white outline-none transition-all"
                       data-testid="select-time"
                     >
@@ -346,6 +464,10 @@ const EntrexLandingPage = (): JSX.Element => {
                   {/* Adults and Children Row */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <select
+                      value={formData.adults}
+                      onChange={(e) =>
+                        setFormData({ ...formData, adults: e.target.value })
+                      }
                       className="w-full px-4 py-3 border-2 border-gray-800 bg-transparent rounded-lg text-black placeholder-gray-300 focus:border-white outline-none transition-all"
                       data-testid="select-adults"
                     >
@@ -356,6 +478,10 @@ const EntrexLandingPage = (): JSX.Element => {
                       <option>4</option>
                     </select>
                     <select
+                      value={formData.children}
+                      onChange={(e) =>
+                        setFormData({ ...formData, children: e.target.value })
+                      }
                       className="w-full px-4 py-3 border-2 border-gray-800 bg-transparent rounded-lg text-black placeholder-gray-300 focus:border-white outline-none transition-all"
                       data-testid="select-children"
                     >
@@ -371,6 +497,10 @@ const EntrexLandingPage = (): JSX.Element => {
                   <textarea
                     placeholder="Message"
                     rows={3}
+                    value={formData.message}
+                    onChange={(e) =>
+                      setFormData({ ...formData, message: e.target.value })
+                    }
                     className="w-full px-4 py-3 border-2 border-gray-800 bg-transparent rounded-lg text-black placeholder-gray-300 focus:border-white outline-none transition-all"
                     data-testid="textarea-message"
                   ></textarea>
@@ -379,18 +509,30 @@ const EntrexLandingPage = (): JSX.Element => {
                   <div className="grid grid-cols-2 gap-4 pt-2">
                     <button
                       type="reset"
+                      onClick={() =>
+                        setFormData({
+                          fullName: "",
+                          phone: "",
+                          email: "",
+                          date: "",
+                          time: "",
+                          adults: "",
+                          children: "",
+                          message: "",
+                        })
+                      }
                       className="w-full py-3 px-4 rounded-lg bg-white/20 text-white font-medium hover:bg-white/30 transition-colors border:1px solid #FFFFFF "
                       data-testid="button-reset"
                     >
                       RESET
                     </button>
-                    <button
-                      type="submit"
-                      className="w-full py-3 px-4 rounded-lg bg-white text-black font-bold hover:bg-gray-100"
-                      data-testid="button-book-now"
-                    >
-                      LET'S BOOK NOW
-                    </button>
+                      <button
+                        type="submit"
+                        className="w-full py-3 px-4 rounded-lg bg-white text-black font-bold hover:bg-gray-100"
+                        data-testid="button-book-now"
+                      >
+                        LET'S BOOK NOW
+                      </button>
                   </div>
                 </form>
               </div>
