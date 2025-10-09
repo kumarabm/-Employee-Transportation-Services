@@ -1,12 +1,16 @@
 import express from "express";
 import fs from "fs";
 import path from "path";
+import { fileURLToPath } from "url";
 import { createServer as createViteServer, createLogger } from "vite";
 import { nanoid } from "nanoid";
 import react from "@vitejs/plugin-react";
-import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 
 const viteLogger = createLogger();
+
+// ES module __dirname fix
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export function log(message, source = "express") {
   const formattedTime = new Date().toLocaleTimeString("en-US", {
@@ -26,30 +30,18 @@ export async function setupVite(app, server) {
     allowedHosts: true,
   };
 
-  // Essential Vite config (inlined to avoid TypeScript import issues)
   const inlineConfig = {
-    plugins: [
-      react(),
-      runtimeErrorOverlay(),
-      ...(process.env.NODE_ENV !== "production" &&
-      process.env.REPL_ID !== undefined
-        ? [
-            await import("@replit/vite-plugin-cartographer").then((m) =>
-              m.cartographer(),
-            ),
-          ]
-        : []),
-    ],
+    plugins: [react()],
     resolve: {
       alias: {
-        "@": path.resolve(import.meta.dirname, "..", "client", "src"),
-        "@shared": path.resolve(import.meta.dirname, "..", "shared"),
-        "@assets": path.resolve(import.meta.dirname, "..", "attached_assets"),
+        "@": path.resolve(__dirname, "..", "client", "src"),
+        "@shared": path.resolve(__dirname, "..", "shared"),
+        "@assets": path.resolve(__dirname, "..", "attached_assets"),
       },
     },
-    root: path.resolve(import.meta.dirname, "..", "client"),
+    root: path.resolve(__dirname, "..", "client"),
     build: {
-      outDir: path.resolve(import.meta.dirname, "..", "dist/public"),
+      outDir: path.resolve(__dirname, "..", "dist/public"),
       emptyOutDir: true,
     },
     server: {
@@ -75,22 +67,22 @@ export async function setupVite(app, server) {
   });
 
   app.use(vite.middlewares);
+
   app.use("*", async (req, res, next) => {
     const url = req.originalUrl;
 
     try {
       const clientTemplate = path.resolve(
-        import.meta.dirname,
+        __dirname,
         "..",
         "client",
-        "index.html",
+        "index.html"
       );
 
-      // always reload the index.html file from disk incase it changes
       let template = await fs.promises.readFile(clientTemplate, "utf-8");
       template = template.replace(
         `src="/src/main.tsx"`,
-        `src="/src/main.tsx?v=${nanoid()}"`,
+        `src="/src/main.tsx?v=${nanoid()}"`
       );
       const page = await vite.transformIndexHtml(url, template);
       res.status(200).set({ "Content-Type": "text/html" }).end(page);
@@ -102,17 +94,16 @@ export async function setupVite(app, server) {
 }
 
 export function serveStatic(app) {
-  const distPath = path.resolve(import.meta.dirname, "public");
+  const distPath = path.resolve(__dirname, "public");
 
   if (!fs.existsSync(distPath)) {
     throw new Error(
-      `Could not find the build directory: ${distPath}, make sure to build the client first`,
+      `Could not find the build directory: ${distPath}, make sure to build the client first`
     );
   }
 
   app.use(express.static(distPath));
 
-  // fall through to index.html if the file doesn't exist
   app.use("*", (_req, res) => {
     res.sendFile(path.resolve(distPath, "index.html"));
   });

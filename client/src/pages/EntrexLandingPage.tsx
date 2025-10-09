@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , FormEvent} from "react";
 import { Link } from "wouter";
 import { CallToActionSection } from "./sections/CallToActionSection";
 import { CertificationsSection } from "./sections/CertificationsSection";
@@ -20,10 +20,22 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
+import axios from "axios";
+
+interface BookingFormData {
+  fullName: string;
+  phone: string;
+  email: string;
+  date: string;
+  time: string;
+  adults: string | number;
+  children: string | number;
+  message: string;
+}
 
 const EntrexLandingPage = (): JSX.Element => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [formData, setFormData] = useState({
+ const [formData, setFormData] = useState<BookingFormData>({
     fullName: "",
     phone: "",
     email: "",
@@ -110,42 +122,37 @@ const EntrexLandingPage = (): JSX.Element => {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-
     try {
-      const response = await fetch("http://localhost:5000/api/bookingForms", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...formData,
-          adults: parseInt(formData.adults),
-          children: parseInt(formData.children),
-        }),
+
+ const payload = {
+  ...formData,
+  adults: parseInt(formData.adults) || 0,
+  children: parseInt(formData.children) || 0,
+};
+
+console.log("Submitting form with data:", payload);
+
+const response = await axios.post("/api/bookingForms", payload);
+
+console.log(response.data, "resapi");
+alert("Booking successful!");
+
+
+      setFormData({
+        fullName: "",
+        phone: "",
+        email: "",
+        date: "",
+        time: "",
+        adults: "",
+        children: "",
+        message: "",
       });
-
-      const result = await response.json();
-
-      if (response.ok) {
-        alert("Booking successful!");
-        setFormData({
-          fullName: "",
-          phone: "",
-          email: "",
-          date: "",
-          time: "",
-          adults: "",
-          children: "",
-          message: "",
-        });
-      } else {
-        alert("Error: " + result.message);
-      }
-    } catch (err) {
-      console.error(err);
-      alert("Server error");
+    } catch (err: any) {
+      console.error(err.response?.data || err.message);
+      alert("Error: " + (err.response?.data?.message || "Server error"));
     }
   };
 
@@ -378,7 +385,7 @@ const EntrexLandingPage = (): JSX.Element => {
                   Book Your Ride Instantly
                 </h2>
 
-                <form className="space-y-4" data-testid="booking-form">
+                <form className="space-y-4" data-testid="booking-form"  onSubmit={handleSubmit}>
                   {/* Name and Phone Row */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <input
@@ -519,16 +526,13 @@ const EntrexLandingPage = (): JSX.Element => {
                     >
                       RESET
                     </button>
-                    <form onSubmit={handleSubmit}>
                       <button
                         type="submit"
                         className="w-full py-3 px-4 rounded-lg bg-white text-black font-bold hover:bg-gray-100"
                         data-testid="button-book-now"
-                        onClick={handleSubmit}
                       >
                         LET'S BOOK NOW
                       </button>
-                    </form>
                   </div>
                 </form>
               </div>

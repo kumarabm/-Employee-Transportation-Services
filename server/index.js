@@ -4,7 +4,7 @@ import { setupVite, serveStatic, log } from "./vite.js";
 import connectDB from "./config/db.js";
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
-
+import cors from "cors";
 // Load environment variables
 dotenv.config();
 
@@ -12,6 +12,8 @@ const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cors());
+
 
 app.use((req, res, next) => {
   const start = Date.now();
