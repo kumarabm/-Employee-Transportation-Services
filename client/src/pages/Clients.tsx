@@ -18,7 +18,6 @@ import img1 from "./Assets/1.png";
 import img2 from "./Assets/2.png";
 import img3 from "./Assets/3.png";
 
-
 const ClientsPage = () => {
   const navigationItems = [
     { label: "About Us", href: "/about-us" },
@@ -92,21 +91,21 @@ const ClientsPage = () => {
       role: "Cricket Enthusiast, Mumbai",
       text: "Reliable, courteous, and always on time. ENTREX is more than a transport provider—they're our mobility partner.",
       rating: 5,
-      image: {img1}
+      image: { img1 },
     },
     {
       name: "Masha Pillai",
       role: "Finance Coach, Bangalore",
       text: "As an expat, I felt completely at ease with ENTREX. Every ride was smooth, safe, and incredibly professional.",
       rating: 5,
-      image: {img2}
+      image: { img2 },
     },
     {
       name: "Aryan Khan",
       role: "School Football Coach, Delhi",
       text: "Best service I've used in a while. My entire team now orders from here—reliable and affordable.",
       rating: 5,
-      image: {img3}
+      image: { img3 },
     },
   ];
 
@@ -148,7 +147,8 @@ const ClientsPage = () => {
   return (
     <div className="min-h-screen flex flex-col bg-white">
       {/* Top Contact Bar */}
-      <div className="w-full bg-gray-100 py-2 text-center text-sm text-gray-600">
+      <div className="w-full py-2 flex justify-between text-sm">
+        <span>bookings@entrex.in</span>
         <span>+91 44 4953 0055 | +91 98400 27990 | +91 91767 81444</span>
       </div>
 
@@ -391,7 +391,7 @@ const ClientsPage = () => {
                     "{testimonial.text}"
                   </p>
                   <div className="flex items-center">
-                    <div className="w-12 h-12 bg-gray-300 rounded-full mr-4" ></div>
+                    <div className="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
                     <div>
                       <div className="font-semibold text-gray-900">
                         {testimonial.name}

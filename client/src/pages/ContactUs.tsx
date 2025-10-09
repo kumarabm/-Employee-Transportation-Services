@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
+import { useToast } from "@/hooks/use-toast";
 
 
 const ContactUs = () => {
@@ -130,7 +131,8 @@ const ContactUs = () => {
   return (
     <div className="min-h-screen flex flex-col bg-white">
       {/* Top Contact Bar */}
-      <div className="w-full bg-gray-100 py-2 text-center text-sm text-gray-600">
+      <div className="w-full py-2 flex justify-between text-sm">
+        <span>bookings@entrex.in</span>
         <span>+91 44 4953 0055 | +91 98400 27990 | +91 91767 81444</span>
       </div>
 
